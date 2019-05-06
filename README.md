@@ -1,8 +1,7 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## React Form
 
-In the project directory, you can run:
+Just to learn React
 
 ### `npm start`
 
