@@ -31,45 +31,82 @@ button {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #f6f6f6;
-  background-color: #181818;
-  overflow: hidden;
+  background-color: #f6f6f6;
+  color: #181818;
 }
 
-.header,
-.content {
-  padding: 15px;
+.phone-screen > * {
+  flex: 1 1 auto;
 }
 
 /* === HEADER =====================================*/
 
 .header {
-  flex: 5vh;
-  background: linear-gradient(281deg, hsl(215, 100%, 30%) 0%, hsl(215, 100%, 40%) 50%, hsl(215, 100%, 50%) 100%);
+  background: linear-gradient(281deg, #002f6c 0%, hsl(215, 100%, 40%) 80%, hsl(215, 100%, 50%) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 10vh;
 }
 
-.header .searchbar {
+.header-logo {
+  min-width: 100px;
+}
+
+.header-title {
+  color: #f6f6f6;
+  max-width: 800px;
+  font-weight: bold;
+}
+
+.log {
+  min-width: 100px;
   border: none;
   background: none;
   color: #f6f6f6;
-  text-align: center;
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+/* === SEARCHBOX ==================================*/
+
+.searchbox {
+  background-color: #f6f6f6;
+  min-height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: baseline;
+  box-shadow: 0px 10px 20px -13px rgba(38, 38, 38, 1);
+}
+
+.search-bar {
+  flex: 70vw;
+  border: none;
+  background: none;
+  color: #f6f6f6;
+  text-align: left;
   font-size: 1em;
-  display: none;
+  margin-top: 10px;
+  color: black;
+  padding-left: 30px;
+}
+
+.search-btn {
+  flex: 10vw;
+  border: none;
 }
 
 /* === MAIN =======================================*/
 
 .content {
-  flex: 80%;
-  margin-right: -20px;
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
   scrollbar-base-color: grey;
   scrollbar-track-color: grey;
   padding-right: 30px;
-}
-
-.content-img-default {
-  width: 60%;
+  padding-bottom: 60px;
 }
 
 .subtitle {
@@ -80,12 +117,12 @@ button {
 }
 
 .subtitle-para {
-  flex: 80%;
+  flex: 85vw;
   padding-left: 2vw;
 }
 
 .subtitle-btn {
-  flex: 8%;
+  flex: 10vw;
   align-items: center;
   width: 50px;
   height: 50px;
@@ -139,20 +176,21 @@ button {
 .fa-play {
   background: none;
   font-size: 35px;
-  color: rgba(0, 72, 164, 1);
+  color: #002f6c;
 }
 
 span {
-  color: rgba(0, 114, 255, 1);
+  color: #002f6c;
   font-weight: bold;
 }
 
 /* === FOOTER =====================================*/
 
 .footer {
-  flex: 8vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 10vh;
 }
 
 .footer .btn {
@@ -161,6 +199,7 @@ span {
   color: #f6f6f6;
   border: none;
   padding: 3px;
+  height: 100%;
 }
 
 .verticalLine {
@@ -186,7 +225,7 @@ span {
     height: 6vw;
   }
   .fa-play {
-    font-size: 6vw;
+    font-size: 3vw;
   }
 }
 

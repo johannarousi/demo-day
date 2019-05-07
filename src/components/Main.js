@@ -1,10 +1,10 @@
 import React from "react";
-import finnishGif from "../img/giphy.gif";
+import Header from "./Header";
+import Searchbox from "./Searchbox";
 
 const Main = () => {
   return (
     <main className="content">
-      <img className="content-img-default" src={finnishGif} alt="Finnish Gif" />
       <div className="subtitle">
         <p className="subtitle-para">
           Yöllä taas mä menin parvekkeelle <span>nukkumaan</span>, Jotta lähempänä mua ois hän
@@ -41,7 +41,12 @@ const Main = () => {
 
       <div className="subtitle">
         <p className="subtitle-para">
-          Näin opin <span>nukkumaan</span> - poppakonsteja ei ole
+          Näin opin <span>nukkumaan</span> - poppakonsteja ei ole That looks simple! Unfortunately, there is an issue
+          with the code above. It assumes window width to be static — get it once and render the appropriate layout. The
+          reality of the web is different, of course. If you resize your browser, the app won’t re-render, because it
+          doesn’t know something has changed. And yet, something clearly did change. But how would we know? resize
+          events The only way the dimensions of the page change is if a user resizes the browser (or rotates their
+          phone.) Our browsers are kind enough to give us a simple event whenever the size of the page changes.
         </p>
         <button className="subtitle-btn">
           <a href="#words" className="hvr-pulse-shrink">

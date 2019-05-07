@@ -19,7 +19,7 @@ const Footer = () => {
       <button className="btn">
         <div>
           <i className="fas fa-search" />
-          <p className="font-title">Search</p>
+          <p className="font-title">My List</p>
         </div>
       </button>
     </footer>
