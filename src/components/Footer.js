@@ -3,7 +3,7 @@ import React from "react";
 const Footer = () => {
   return (
     <footer className="footer">
-      <button className="btn">
+      <button className="btn btn-word">
         <div>
           <i className="fab fa-wikipedia-w" />
           <p className="font-title">Words</p>
@@ -16,10 +16,10 @@ const Footer = () => {
         </div>
       </button> */}
       <div className="verticalLine" />
-      <button className="btn">
+      <button className="btn btn-list">
         <div>
-          <i className="fas fa-search" />
-          <p className="font-title">Search</p>
+          <i class="fas fa-list" />
+          <p className="font-title">My List</p>
         </div>
       </button>
     </footer>

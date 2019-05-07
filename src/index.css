@@ -11,7 +11,7 @@ body {
   font-size: 18px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: grey;
+  background-color: #f6f6f6;
   text-align: center;
 }
 
@@ -24,52 +24,104 @@ button {
 
 .phone-screen {
   width: 100%;
-  max-width: 450px;
+  max-width: 540px;
   height: 100vh;
   margin: 0 auto;
-  border-radius: 5px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  color: #f6f6f6;
-  background-color: #181818;
-  overflow: hidden;
+  background-color: #f6f6f6;
+  color: #181818;
 }
 
-.header,
-.content {
-  padding: 15px;
+.phone-screen > * {
+  flex: 1 1 auto;
 }
 
 /* === HEADER =====================================*/
 
 .header {
-  flex: 5vh;
-  background: linear-gradient(281deg, hsl(215, 100%, 30%) 0%, hsl(215, 100%, 40%) 50%, hsl(215, 100%, 50%) 100%);
+  background: linear-gradient(281deg, #002f6c 0%, hsl(215, 100%, 40%) 90%, hsl(215, 100%, 50%) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  max-height: 100px;
+  min-height: 80px;
 }
 
-.header .searchbar {
+.header-logo {
+  min-width: 100px;
+  max-width: 150px;
+  flex: 10vw;
+}
+
+.header-title {
+  flex: 70vw;
+  color: #f6f6f6;
+  max-width: 900px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.log {
+  flex: 10vw;
+  min-width: 100px;
   border: none;
   background: none;
   color: #f6f6f6;
-  text-align: center;
+  font-size: 18px;
+  padding-right: 10px;
+}
+
+/* === SEARCHBOX ==================================*/
+
+.searchbox {
+  background-color: #f6f6f6;
+  min-height: 60px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 10px 20px -13px rgba(38, 38, 38, 1);
+}
+
+.search-bar {
+  flex: 60vw;
+  max-width: 1300px;
+  border: none;
+  background: none;
+  color: #f6f6f6;
+  text-align: left;
   font-size: 1em;
-  display: none;
+  margin-top: 10px;
+  color: black;
+  padding-left: 30px;
+}
+
+.search-btn {
+  flex: 10vw;
+  border: none;
+  background: none;
+}
+
+.fa-search {
+  color: #002f6c;
+  font-size: 1.5rem;
 }
 
 /* === MAIN =======================================*/
 
 .content {
-  flex: 80%;
-  margin-right: -20px;
   overflow-y: scroll;
+  /*Phone & Tablet*/
+  -webkit-overflow-scrolling: touch;
   scrollbar-base-color: grey;
   scrollbar-track-color: grey;
   padding-right: 30px;
-}
-
-.content-img-default {
-  width: 60%;
+  padding-bottom: 60px;
 }
 
 .subtitle {
@@ -80,21 +132,36 @@ button {
 }
 
 .subtitle-para {
-  flex: 80%;
+  flex: 85vw;
   padding-left: 2vw;
 }
 
 .subtitle-btn {
-  flex: 8%;
+  flex: 10vw;
   align-items: center;
   width: 50px;
   height: 50px;
   background: none;
   border: none;
+  padding-left: 2vw;
+}
+
+.fa-play {
+  background: none;
+  font-size: 35px;
+  color: #002f6c;
 }
 
 .fa-play:hover {
   color: rgba(0, 114, 255, 1);
+}
+
+.fa-play:active {
+  position: relative;
+  bottom: 1px;
+  -ms-transform: translateY(2px);
+  -webkit-transform: translateY(2px);
+  transform: translateY(2px);
 }
 
 @-webkit-keyframes hvr-pulse-shrink {
@@ -136,43 +203,51 @@ button {
   animation-direction: alternate;
 }
 
-.fa-play {
-  background: none;
-  font-size: 35px;
-  color: rgba(0, 72, 164, 1);
-}
-
 span {
-  color: rgba(0, 114, 255, 1);
+  color: #002f6c;
   font-weight: bold;
 }
 
 /* === FOOTER =====================================*/
 
 .footer {
-  flex: 8vh;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  max-height: 100px;
+  min-height: 80px;
 }
 
 .footer .btn {
   flex: 1;
-  background: linear-gradient(180deg, rgba(51, 51, 51, 1) 0%, rgba(0, 0, 0, 1) 100%);
   color: #f6f6f6;
   border: none;
   padding: 3px;
+  height: 100%;
+}
+
+.btn-word {
+  background: linear-gradient(281deg, #002f6c 0%, hsl(215, 100%, 40%) 90%, hsl(215, 100%, 50%) 100%);
+}
+
+.btn-list {
+  background: linear-gradient(281deg, hsl(215, 100%, 50%) 0%, hsl(215, 100%, 40%) 10%, #002f6c 100%);
 }
 
 .verticalLine {
   width: 0px; /* Use only border style */
   height: 100%;
   float: left;
-  border: 2px #181818 inset;
+  border: 1px solid #002663;
 }
 
-.fa-wikipedia-w,
-.fa-search {
+.fa-wikipedia-w {
   font-size: 1.5rem;
+}
+
+.fa-list {
+  font-size: 1.7rem;
 }
 
 .font-title {
@@ -186,18 +261,22 @@ span {
     height: 6vw;
   }
   .fa-play {
-    font-size: 6vw;
+    font-size: 3vw;
   }
 }
 
 @media (min-width: 768px) {
   body {
-    background: grey;
-    font-size: 2vw;
+    font-size: 20px;
   }
 
   .phone-screen {
-    max-width: 60vw;
+    max-width: 540px;
+    height: 90vh;
+    margin: 5vh auto;
+    border: 10px solid rgba(0, 0, 0, 0.8);
+    border-bottom-width: 70px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
   }
 
   .fa-wikipedia-w,
