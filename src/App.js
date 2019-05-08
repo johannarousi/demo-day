@@ -10,6 +10,8 @@ import MainDesktop from './components/MainDesktop';
 class App extends Component {
     state = {
         width: window.innerWidth,
+        subtitles: [],
+        searchTerm: '',
     };
 
     componentWillMount() {
@@ -26,6 +28,21 @@ class App extends Component {
         this.setState({ width: window.innerWidth });
     };
 
+    searchWord = searchTerm => {
+        if (searchTerm.length < 2) {
+            return;
+        }
+        const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${searchTerm}`;
+        fetch(urlWord)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    subtitles: data.subtitles,
+                    searchTerm,
+                });
+            });
+    };
+
     render() {
         const { width } = this.state;
         const isMobile = width <= 500;
@@ -34,8 +51,8 @@ class App extends Component {
             return (
                 <div className="phone-screen">
                     <Header />
-                    <Searchbox />
-                    <Main />
+                    <Searchbox searchWord={this.searchWord} />
+                    <Main subtitles={this.state.subtitles} searchTerm={this.state.searchTerm} />
                     <Footer />
                 </div>
             );
