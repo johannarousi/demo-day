@@ -5,11 +5,37 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 class App extends Component {
-    state = { searchTerm: '' };
+    state = {
+        word: {},
+        subtitles: [],
+        movies: [],
+    };
 
-    searchWord = search => {
-        // console.log('search', search);
-        this.setState({ searchTerm: search });
+    componentDidMount() {
+        const urlMovie = 'https://yle-subtitle.herokuapp.com/api/movies';
+
+        fetch(urlMovie)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    movies: data,
+                });
+            });
+    }
+
+    searchWord = searchTerm => {
+        if (searchTerm.length < 2) {
+            return;
+        }
+        const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${searchTerm}`;
+        fetch(urlWord)
+            .then(response => response.json())
+            .then(data => {
+                this.setState({
+                    subtitles: data.subtitles,
+                });
+            });
     };
 
     render() {
@@ -17,7 +43,7 @@ class App extends Component {
             <div className="phone-screen">
                 <Header />
                 <Searchbox searchWord={this.searchWord} />
-                <Main searchTerm={this.state.searchTerm} />
+                <Main subtitles={this.state.subtitles} movies={this.state.movies} />
                 <Footer />
             </div>
         );

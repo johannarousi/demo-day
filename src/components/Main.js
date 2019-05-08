@@ -2,52 +2,10 @@ import React from 'react';
 import Subtitle from './Subtitle';
 
 class Main extends React.Component {
-    state = { word: {}, subtitles: [], movies: [] };
-
-    componentDidMount() {
-        // console.log('did monunt');
-        const urlMovie = 'https://yle-subtitle.herokuapp.com/api/movies';
-        // const url = 'http://localhost:5000/api/word/kolme';
-
-        fetch(urlMovie)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.setState({
-                    movies: data,
-                });
-            });
-
-        this.searchNow();
-    }
-
-    componentDidUpdate() {
-        console.log('update');
-        // const { searchTerm } = this.props;
-        // console.log(searchTerm);
-        // if (searchTerm.length > 1) {
-        //     this.searchNow(searchTerm);
-        // }
-    }
-
-    searchNow = (searchWord = 'kolme') => {
-        const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${searchWord}`;
-        fetch(urlWord)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.setState({
-                    // word: data.word,
-                    subtitles: data.subtitles,
-                });
-                console.log(this.state.subtitles);
-            });
-    };
-
     render() {
-        console.log(this.props.searchTerm);
-        const renderSubtitles = this.state.subtitles.map(subtitle => (
-            <Subtitle key={subtitle._id} subtitle={subtitle} movies={this.state.movies} />
+        // console.log(this.props.searchTerm);
+        const renderSubtitles = this.props.subtitles.map(subtitle => (
+            <Subtitle key={subtitle._id} subtitle={subtitle} movies={this.props.movies} />
         ));
         return (
             <main className="content">
