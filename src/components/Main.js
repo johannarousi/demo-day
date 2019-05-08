@@ -2,13 +2,14 @@ import React from 'react';
 import Subtitle from './Subtitle';
 
 class Main extends React.Component {
-    state = { word: {}, subtitles: [] };
+    state = { word: {}, subtitles: [], movies: [] };
 
     componentDidMount() {
-        const url = 'https://yle-subtitle.herokuapp.com/api/word/kolme';
+        const urlWord = 'https://yle-subtitle.herokuapp.com/api/word/kolme';
+        const urlMovie = 'https://yle-subtitle.herokuapp.com/api/movies';
         // const url = 'http://localhost:5000/api/word/kolme';
 
-        fetch(url)
+        fetch(urlWord)
             .then(response => response.json())
             .then(data => {
                 console.log(data);
@@ -18,11 +19,20 @@ class Main extends React.Component {
                 });
                 console.log(this.state.subtitles);
             });
+
+        fetch(urlMovie)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    movies: data,
+                });
+            });
     }
 
     render() {
         const renderSubtitles = this.state.subtitles.map(subtitle => (
-            <Subtitle key={subtitle._id} subtitle={subtitle} />
+            <Subtitle key={subtitle._id} subtitle={subtitle} movies={this.state.movies} />
         ));
         return (
             <main className="content">
