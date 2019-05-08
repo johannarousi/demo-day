@@ -5,20 +5,9 @@ class Main extends React.Component {
     state = { word: {}, subtitles: [], movies: [] };
 
     componentDidMount() {
-        const urlWord = 'https://yle-subtitle.herokuapp.com/api/word/kolme';
+        // console.log('did monunt');
         const urlMovie = 'https://yle-subtitle.herokuapp.com/api/movies';
         // const url = 'http://localhost:5000/api/word/kolme';
-
-        fetch(urlWord)
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                this.setState({
-                    word: data.word,
-                    subtitles: data.subtitles,
-                });
-                console.log(this.state.subtitles);
-            });
 
         fetch(urlMovie)
             .then(response => response.json())
@@ -28,16 +17,42 @@ class Main extends React.Component {
                     movies: data,
                 });
             });
+
+        this.searchNow();
     }
 
+    componentDidUpdate() {
+        console.log('update');
+        // const { searchTerm } = this.props;
+        // console.log(searchTerm);
+        // if (searchTerm.length > 1) {
+        //     this.searchNow(searchTerm);
+        // }
+    }
+
+    searchNow = (searchWord = 'kolme') => {
+        const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${searchWord}`;
+        fetch(urlWord)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                this.setState({
+                    // word: data.word,
+                    subtitles: data.subtitles,
+                });
+                console.log(this.state.subtitles);
+            });
+    };
+
     render() {
+        console.log(this.props.searchTerm);
         const renderSubtitles = this.state.subtitles.map(subtitle => (
             <Subtitle key={subtitle._id} subtitle={subtitle} movies={this.state.movies} />
         ));
         return (
             <main className="content">
                 {renderSubtitles}
-                <div className="subtitle">
+                {/* <div className="subtitle">
                     <p className="subtitle-para">
                         Yöllä taas mä menin parvekkeelle <span>nukkumaan</span>, Jotta lähempänä mua
                         ois hän
@@ -91,7 +106,7 @@ class Main extends React.Component {
                             <i className="fas fa-play" />
                         </a>
                     </button>
-                </div>
+                </div> */}
             </main>
         );
     }

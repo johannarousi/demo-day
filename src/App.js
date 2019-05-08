@@ -5,14 +5,19 @@ import Main from './components/Main';
 import Footer from './components/Footer';
 
 class App extends Component {
-    state = {};
+    state = { searchTerm: '' };
+
+    searchWord = search => {
+        // console.log('search', search);
+        this.setState({ searchTerm: search });
+    };
 
     render() {
         return (
             <div className="phone-screen">
                 <Header />
-                <Searchbox />
-                <Main />
+                <Searchbox searchWord={this.searchWord} />
+                <Main searchTerm={this.state.searchTerm} />
                 <Footer />
             </div>
         );
