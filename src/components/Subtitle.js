@@ -18,7 +18,7 @@ class Subtitle extends React.Component {
                         parseInt(timeMovie[2]) -
                         timeRewind;
                     // https://areena.yle.fi/1-1070789?seek=11 00:03:13.320
-                    movieNow.link = `${movie.link}?seek=${timeMovie}`;
+                    movieNow.link = `https://areena.yle.fi/${movie.id}?seek=${timeMovie}`;
                 }
             });
         }
