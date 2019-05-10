@@ -135,11 +135,13 @@ button {
 
 .sub-btn-below {
   display: flex;
+  justify-content: space-evenly;
 }
 
 .fa-save,
-.fa-globe-europe {
-  font-size: 35px;
+.fa-globe-europe,
+.fa-cogs {
+  font-size: 30px;
 }
 
 .subtitle {

@@ -13,7 +13,7 @@ class Main extends React.Component {
         fetch(urlMovie)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 this.setState({
                     movies: data,
                 });
@@ -42,21 +42,23 @@ class Main extends React.Component {
                         <p className="subtitle-para">
                             Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
                         </p>
+                        <button className="subtitle-btn" type="button">
+                            <i className="fas fa-cogs" />
+                        </button>
+                    </div>
+                    <div className="sub-btn-below">
+                        <div>
+                            <label>
+                                Language:
+                                <select value={this.state.langues} onChange={this.handleChange}>
+                                    <option value="en">English</option>
+                                    <option value="fr">France</option>
+                                </select>
+                            </label>
+                        </div>
                     </div>
                 </div>
                 {renderSubtitles}
-                {/* <div className="subtitle">
-                    <p className="subtitle-para">
-                        Yöllä taas mä menin parvekkeelle <span>nukkumaan</span>, Jotta lähempänä mua
-                        ois hän
-                    </p>
-                    <button className="subtitle-btn">
-                        <a href="#words" className="hvr-pulse-shrink">
-                            <i className="fas fa-play" />
-                        </a>
-                    </button>
-                </div>
-                 */}
             </main>
         );
     }

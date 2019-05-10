@@ -6,7 +6,7 @@ class Subtitle extends React.Component {
         const parentSubtitle = e.currentTarget.closest('.subtitle-wrapper');
         const translateText = parentSubtitle
             .querySelector('.subtitle-para')
-            .textContent.replace(/[\?\n\.]/gi, ' ');
+            .textContent.replace(/[\n]/gi, '- ');
 
         console.log(translateText);
 
@@ -54,7 +54,7 @@ class Subtitle extends React.Component {
                         dangerouslySetInnerHTML={{ __html: subtitleSpan }}
                     />
 
-                    <button className="subtitle-btn">
+                    <button className="subtitle-btn" type="button">
                         <a
                             href={movieNow.link}
                             className="hvr-pulse-shrink"
@@ -66,10 +66,10 @@ class Subtitle extends React.Component {
                     </button>
                 </div>
                 <div className="sub-btn-below">
-                    <button className="subtitle-btn">
+                    <button className="subtitle-btn" type="button">
                         <i className="fas fa-save" />
                     </button>
-                    <button className="subtitle-btn" onClick={this.onClickTranslate}>
+                    <button className="subtitle-btn" onClick={this.onClickTranslate} type="button">
                         <i className="fas fa-globe-europe" />
                     </button>
                 </div>

@@ -1,5 +1,5 @@
 export async function translate(translateTo, text, translateFrom = 'auto') {
-    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${translateFrom}&tl=${translateTo}&dt=t&q=${encodeURI(
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${translateFrom}&tl=${translateTo}&dt=t&q=${encodeURIComponent(
         text
     )}`;
 
