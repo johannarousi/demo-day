@@ -42,7 +42,12 @@ button {
 /* === HEADER =====================================*/
 
 .header {
-  background: linear-gradient(281deg, #002f6c 0%, hsl(215, 100%, 40%) 90%, hsl(215, 100%, 50%) 100%);
+  background: linear-gradient(
+    281deg,
+    #002f6c 0%,
+    hsl(215, 100%, 40%) 90%,
+    hsl(215, 100%, 50%) 100%
+  );
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -124,9 +129,22 @@ button {
   padding-bottom: 60px;
 }
 
+.subtitle-wrapper {
+  margin: 60px 0;
+}
+
+.sub-btn-below {
+  display: flex;
+}
+
+.fa-save,
+.fa-globe-europe {
+  font-size: 35px;
+}
+
 .subtitle {
   text-align: left;
-  margin: 60px 0;
+  margin: 0;
   display: flex;
   justify-content: space-between;
 }
@@ -228,11 +246,21 @@ span {
 }
 
 .btn-word {
-  background: linear-gradient(281deg, #002f6c 0%, hsl(215, 100%, 40%) 90%, hsl(215, 100%, 50%) 100%);
+  background: linear-gradient(
+    281deg,
+    #002f6c 0%,
+    hsl(215, 100%, 40%) 90%,
+    hsl(215, 100%, 50%) 100%
+  );
 }
 
 .btn-list {
-  background: linear-gradient(281deg, hsl(215, 100%, 50%) 0%, hsl(215, 100%, 40%) 10%, #002f6c 100%);
+  background: linear-gradient(
+    281deg,
+    hsl(215, 100%, 50%) 0%,
+    hsl(215, 100%, 40%) 10%,
+    #002f6c 100%
+  );
 }
 
 .verticalLine {

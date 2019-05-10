@@ -1,6 +1,21 @@
 import React from 'react';
+import { translate } from '../services/translate';
 
 class Subtitle extends React.Component {
+    onClickTranslate = e => {
+        const parentSubtitle = e.currentTarget.closest('.subtitle-wrapper');
+        const translateText = parentSubtitle
+            .querySelector('.subtitle-para')
+            .textContent.replace(/[\?\n\.]/gi, ' ');
+
+        console.log(translateText);
+
+        translate('en', translateText, 'fi').then(dataTranslate => {
+            // console.log(dataTranslate);
+            parentSubtitle.insertAdjacentHTML('beforeEnd', `<div>${dataTranslate}<div>`);
+        });
+    };
+
     render() {
         const movieNow = { name: '', link: '' };
         const { movies, subtitle, searchTerm } = this.props;
@@ -28,18 +43,36 @@ class Subtitle extends React.Component {
         // console.log(subtitleSpan);
 
         return (
-            <div className="subtitle">
-                {/* <p className="subtitle-para">
+            <div className="subtitle-wrapper">
+                <div className="subtitle">
+                    {/* <p className="subtitle-para">
                     {subtitleSpan}
                     <br />{movieNow.name}
                 </p> */}
-                <p className="subtitle-para" dangerouslySetInnerHTML={{ __html: subtitleSpan }} />
+                    <p
+                        className="subtitle-para"
+                        dangerouslySetInnerHTML={{ __html: subtitleSpan }}
+                    />
 
-                <button className="subtitle-btn">
-                    <a href={movieNow.link} className="hvr-pulse-shrink" target="_blank">
-                        <i className="fas fa-play" />
-                    </a>
-                </button>
+                    <button className="subtitle-btn">
+                        <a
+                            href={movieNow.link}
+                            className="hvr-pulse-shrink"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            <i className="fas fa-play" />
+                        </a>
+                    </button>
+                </div>
+                <div className="sub-btn-below">
+                    <button className="subtitle-btn">
+                        <i className="fas fa-save" />
+                    </button>
+                    <button className="subtitle-btn" onClick={this.onClickTranslate}>
+                        <i className="fas fa-globe-europe" />
+                    </button>
+                </div>
             </div>
         );
     }
