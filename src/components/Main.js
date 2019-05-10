@@ -1,5 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
+import LanguageOption from './languageOption';
+
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -47,15 +49,7 @@ class Main extends React.Component {
                         </button>
                     </div>
                     <div className="sub-btn-below">
-                        <div>
-                            <label>
-                                Language:
-                                <select value={this.state.langues} onChange={this.handleChange}>
-                                    <option value="en">English</option>
-                                    <option value="fr">France</option>
-                                </select>
-                            </label>
-                        </div>
+                        <LanguageOption />
                     </div>
                 </div>
                 {renderSubtitles}
