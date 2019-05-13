@@ -1,5 +1,8 @@
 import React from 'react';
 import Subtitle from './Subtitle';
+import LanguageOption from './languageOption';
+
+// import { translate } from '../services/translate';
 
 class Main extends React.Component {
     state = {
@@ -12,38 +15,44 @@ class Main extends React.Component {
         fetch(urlMovie)
             .then(response => response.json())
             .then(data => {
-                console.log(data);
+                // console.log(data);
                 this.setState({
                     movies: data,
                 });
             });
+
+        // translate('en', 'kolme', 'fi').then(data => console.log(data));
     }
 
     render() {
         // console.log(this.props.searchTerm);
-        const renderSubtitles = this.props.subtitles.map(subtitle => (
+        const { subtitles, searchTerm } = this.props;
+
+        const renderSubtitles = subtitles.map(subtitle => (
             <Subtitle
                 key={subtitle._id}
                 subtitle={subtitle}
                 movies={this.state.movies}
-                searchTerm={this.props.searchTerm}
+                searchTerm={searchTerm}
             />
         ));
+
         return (
             <main className="content">
-                {renderSubtitles}
-                {/* <div className="subtitle">
-                    <p className="subtitle-para">
-                        Yöllä taas mä menin parvekkeelle <span>nukkumaan</span>, Jotta lähempänä mua
-                        ois hän
-                    </p>
-                    <button className="subtitle-btn">
-                        <a href="#words" className="hvr-pulse-shrink">
-                            <i className="fas fa-play" />
-                        </a>
-                    </button>
+                <div className="subtitle-wrapper">
+                    <div className="subtitle">
+                        <p className="subtitle-para">
+                            Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
+                        </p>
+                        <button className="subtitle-btn" type="button">
+                            <i className="fas fa-cogs" />
+                        </button>
+                    </div>
+                    <div className="sub-btn-below">
+                        <LanguageOption />
+                    </div>
                 </div>
-                 */}
+                {renderSubtitles}
             </main>
         );
     }
