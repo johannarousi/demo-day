@@ -41,7 +41,7 @@ class App extends Component {
             );
         }
         return (
-            <div>
+            <div className="desktop-screen">
                 <HeaderDesktop />
                 <MainDesktop />
                 <FooterDesktop />
