@@ -4,7 +4,7 @@ class FooterDesktop extends Component {
     render() {
         return (
             <div>
-                <h1>FooterDesktop</h1>
+                <p>COPYRIGHT {'\u00A9'} 2019 INTEGRIFY </p>
             </div>
         );
     }
