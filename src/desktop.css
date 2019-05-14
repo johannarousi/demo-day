@@ -1,10 +1,10 @@
 /* === HEADER =============================== */
-.header-desktop {
+.header {
   height: 80vh;
   color: #fff;
 }
 
-.header-desktop h1 {
+.header h1 {
   font-weight: bold;
   font-size: 6rem;
 }
@@ -34,7 +34,6 @@
   justify-content: space-between;
   text-align: left;
   font-size: 2rem;
-
   width: 100%;
 }
 
@@ -93,8 +92,7 @@
   font-size: 16px;
   padding-left: 6px;
 }
-.buttons-main-card a {
-}
+
 .btn-desktop {
   display: flex;
   align-items: center;
