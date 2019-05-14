@@ -1,6 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
 import LanguageOption from './languageOption';
+import ButtonsMainCardDesktop from './ButtonsMainCardDesktop';
 
 // import { translate } from '../services/translate';
 
@@ -44,12 +45,12 @@ class Main extends React.Component {
                         <p className="subtitle-para">
                             Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
                         </p>
-                        <button className="subtitle-btn" type="button">
-                            <i className="fas fa-cogs" />
-                        </button>
                     </div>
                     <div className="sub-btn-below">
-                        <LanguageOption />
+                        {/* <button className="subtitle-btn" type="button">
+                            <i className="fas fa-cogs" />
+                        </button> */}
+                        <ButtonsMainCardDesktop />
                     </div>
                 </div>
                 {renderSubtitles}

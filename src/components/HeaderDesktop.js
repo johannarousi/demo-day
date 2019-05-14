@@ -22,7 +22,6 @@ class HeaderDesktop extends Component {
 
     render() {
         const styles = {
-            background: '#4497e5',
             backgroundImage: `url(${birch})`,
             backgroundPosition: 'center top',
             backgroundSize: 'cover',

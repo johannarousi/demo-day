@@ -1,5 +1,6 @@
 import React from 'react';
 import { translate } from '../services/translate';
+import ButtonsMainCardDesktop from './ButtonsMainCardDesktop';
 
 class Subtitle extends React.Component {
     onClickTranslate = e => {
@@ -53,25 +54,9 @@ class Subtitle extends React.Component {
                         className="subtitle-para"
                         dangerouslySetInnerHTML={{ __html: subtitleSpan }}
                     />
-
-                    <button className="subtitle-btn" type="button">
-                        <a
-                            href={movieNow.link}
-                            className="hvr-pulse-shrink"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <i className="fas fa-play" />
-                        </a>
-                    </button>
                 </div>
                 <div className="sub-btn-below">
-                    <button className="subtitle-btn" type="button">
-                        <i className="fas fa-save" />
-                    </button>
-                    <button className="subtitle-btn" onClick={this.onClickTranslate} type="button">
-                        <i className="fas fa-globe-europe" />
-                    </button>
+                    <ButtonsMainCardDesktop />
                 </div>
             </div>
         );
