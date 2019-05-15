@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch, NavLink, Redirect, Prompt } from 'react-router-dom';
 import Header from './components/Header';
 import Searchbox from './components/Searchbox';
 import Main from './components/Main';
@@ -45,13 +46,28 @@ class App extends Component {
 
     render() {
         return (
-            <div className="phone-screen">
-                <Header />
-                <Searchbox searchWord={this.searchWord} />
-                <Main subtitles={this.state.subtitles} searchTerm={this.state.searchTerm} />
-                <Footer />
-                <FooterDesktop />
-            </div>
+            <BrowserRouter>
+                <div className="phone-screen">
+                    <Header />
+                    <Searchbox searchWord={this.searchWord} />
+                    <Switch>
+                        <Route path="/words" component={() => <div> Frequency</div>} />
+                        <Route path="/list" component={() => <div> My List</div>} />
+                        <Route
+                            path="/"
+                            component={props => (
+                                <Main
+                                    subtitles={this.state.subtitles}
+                                    searchTerm={this.state.searchTerm}
+                                    {...props}
+                                />
+                            )}
+                        />
+                    </Switch>
+                    <Footer />
+                    <FooterDesktop />
+                </div>
+            </BrowserRouter>
         );
     }
 }
