@@ -3,10 +3,6 @@ import React from 'react';
 class LanguageOption extends React.Component {
     state = { language: 'en' };
 
-    handleChange = event => {
-        this.setState({ language: event.target.value });
-    };
-
     render() {
         return (
             <div>

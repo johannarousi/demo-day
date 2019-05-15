@@ -1,8 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
-import LanguageOption from './languageOption';
+import LanguageOption from './setting/languageOption';
 import ButtonsMainCardDesktop from './ButtonsMainCardDesktop';
-
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -50,7 +49,8 @@ class Main extends React.Component {
                         {/* <button className="subtitle-btn" type="button">
                             <i className="fas fa-cogs" />
                         </button> */}
-                        <ButtonsMainCardDesktop />
+                        {/* <ButtonsMainCardDesktop /> */}
+                        <LanguageOption />
                     </div>
                 </div>
                 {renderSubtitles}

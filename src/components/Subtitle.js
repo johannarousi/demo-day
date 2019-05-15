@@ -13,7 +13,12 @@ class Subtitle extends React.Component {
 
         translate('en', translateText, 'fi').then(dataTranslate => {
             // console.log(dataTranslate);
-            parentSubtitle.insertAdjacentHTML('beforeEnd', `<div>${dataTranslate}<div>`);
+            parentSubtitle
+                .querySelector('.subtitle')
+                .insertAdjacentHTML(
+                    'beforeEnd',
+                    `<div class="subtitle-para">${dataTranslate}<div>`
+                );
         });
     };
 
@@ -27,7 +32,7 @@ class Subtitle extends React.Component {
                     // console.log(movie);
                     movieNow.name = movie.name;
                     let timeMovie = subtitle.timeBegin.split(/[:.]/);
-                    const timeRewind = 1;
+                    const timeRewind = 0;
                     timeMovie =
                         parseInt(timeMovie[0]) * 60 * 60 +
                         parseInt(timeMovie[1]) * 60 +
@@ -56,7 +61,10 @@ class Subtitle extends React.Component {
                     />
                 </div>
                 <div className="sub-btn-below">
-                    <ButtonsMainCardDesktop />
+                    <ButtonsMainCardDesktop
+                        movieNow={movieNow}
+                        clickTranslate={this.onClickTranslate}
+                    />
                 </div>
             </div>
         );
