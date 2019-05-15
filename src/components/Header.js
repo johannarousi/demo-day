@@ -29,6 +29,7 @@ class Header extends Component {
         // };
         return (
             <header className="header">
+                <div className="layer" />
                 <div className="header-title">Demo</div>
                 <button type="button" className="header-log">
                     Log in
