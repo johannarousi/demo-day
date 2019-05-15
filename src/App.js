@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import Footer from './components/Footer';
 import FooterDesktop from './components/FooterDesktop';
+import WordList from './components/WordList';
 // import HeaderDesktop from './components/HeaderDesktop';
 // import MainDesktop from './components/MainDesktop';
 
@@ -15,7 +16,7 @@ class App extends Component {
                 <div className="phone-screen">
                     <Header />
                     <Switch>
-                        <Route path="/words" component={() => <div> Frequency</div>} />
+                        <Route path="/words" component={WordList} />
                         <Route path="/list" component={() => <div> My List</div>} />
                         <Route path="/" component={Main} />
                     </Switch>
