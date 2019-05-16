@@ -1,7 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
-import LanguageOption from './setting/languageOption';
-import Searchbox from './Searchbox';
+import LanguageOption from '../user/languageOption';
+import Searchbox from '../Searchbox';
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {

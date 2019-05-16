@@ -1,5 +1,5 @@
 import React from 'react';
-import { translate } from '../services/translate';
+import { translate } from '../../services/translate';
 import ButtonsMainCard from './ButtonsMainCard';
 
 class Subtitle extends React.Component {
