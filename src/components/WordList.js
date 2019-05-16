@@ -26,26 +26,32 @@ export class WordList extends Component {
         const clickWord = e.currentTarget.id;
 
         const clickParent = e.currentTarget;
-        const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${clickWord}`;
-        fetch(urlWord)
-            .then(response => response.json())
-            .then(data => {
-                // console.log(data.subtitles);
-                this.setState({
-                    subtitles: data.subtitles,
-                });
 
-                clickParent.addClassName('clicked');
-                const sub = this.state.subtitles.slice(0, 3).map(subtitle => {
-                    console.log(subtitle.subtitle);
-                    return `<p style={{ fontStyle: 'italic' }} key={subtitle._id}>
-                            ${subtitle.subtitle}
-                        </p>`;
-                });
-                console.log(sub);
+        const checkClick = clickParent.querySelector('.subtitle');
+        const numSubtible = checkClick.textContent.length;
 
-                clickParent.insertAdjacentHTML('beforeEnd', sub);
-            });
+        if (numSubtible > 0) {
+            console.log(checkClick.textContent.length);
+            clickParent.querySelector('.subtitle').innerHTML = '';
+        } else {
+            const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${clickWord}`;
+            fetch(urlWord)
+                .then(response => response.json())
+                .then(data => {
+                    // console.log(data.subtitles);
+                    this.setState({
+                        subtitles: data.subtitles,
+                    });
+
+                    const sub = this.state.subtitles.slice(0, 3).map(
+                        subtitle => `<p style={{ fontStyle: 'italic' }} key={subtitle._id}>
+                        ${subtitle.subtitle}
+                        </p>`
+                    );
+
+                    checkClick.innerHTML = `${sub.join('')}`;
+                });
+        }
     };
 
     render() {
@@ -67,6 +73,7 @@ export class WordList extends Component {
                 <p>
                     Word <span>{word.name}</span> appears <span>{word.frequency}</span> times.
                 </p>
+                <div className="subtitle" />
             </div>
         ));
 
