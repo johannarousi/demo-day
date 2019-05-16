@@ -1,8 +1,7 @@
 import React from 'react';
 import Subtitle from './Subtitle';
-import LanguageOption from './setting/languageOption';
-import ButtonsMainCardDesktop from './ButtonsMainCardDesktop';
-import Searchbox from './Searchbox';
+import LanguageOption from '../user/languageOption';
+import Searchbox from '../Searchbox';
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -65,10 +64,6 @@ class Main extends React.Component {
                         </p>
                     </div>
                     <div className="sub-btn-below">
-                        {/* <button className="subtitle-btn" type="button">
-                            <i className="fas fa-cogs" />
-                        </button> */}
-                        {/* <ButtonsMainCardDesktop /> */}
                         <LanguageOption />
                     </div>
                 </div>

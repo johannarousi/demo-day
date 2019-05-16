@@ -1,6 +1,6 @@
 import React from 'react';
-import { translate } from '../services/translate';
-import ButtonsMainCardDesktop from './ButtonsMainCardDesktop';
+import { translate } from '../../services/translate';
+import ButtonsMainCard from './ButtonsMainCard';
 
 class Subtitle extends React.Component {
     onClickTranslate = e => {
@@ -10,16 +10,17 @@ class Subtitle extends React.Component {
             .textContent.replace(/[\n]/gi, '- ');
 
         console.log(translateText);
+        const clickTranslate = parentSubtitle.querySelector('.translate');
+        const numTranslate = clickTranslate.textContent.length;
+        console.log(numTranslate);
 
-        translate('en', translateText, 'fi').then(dataTranslate => {
-            // console.log(dataTranslate);
-            parentSubtitle
-                .querySelector('.subtitle')
-                .insertAdjacentHTML(
-                    'beforeEnd',
-                    `<div class="subtitle-para">${dataTranslate}<div>`
-                );
-        });
+        if (numTranslate > 0) {
+            clickTranslate.innerHTML = '';
+        } else {
+            translate('en', translateText, 'fi').then(dataTranslate => {
+                clickTranslate.innerHTML = ` ${dataTranslate} `;
+            });
+        }
     };
 
     render() {
@@ -59,12 +60,10 @@ class Subtitle extends React.Component {
                         className="subtitle-para"
                         dangerouslySetInnerHTML={{ __html: subtitleSpan }}
                     />
+                    <p className="subtitle-para translate" />
                 </div>
                 <div className="sub-btn-below">
-                    <ButtonsMainCardDesktop
-                        movieNow={movieNow}
-                        clickTranslate={this.onClickTranslate}
-                    />
+                    <ButtonsMainCard movieNow={movieNow} clickTranslate={this.onClickTranslate} />
                 </div>
             </div>
         );

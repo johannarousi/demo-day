@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class ButtonsMainCardDesktop extends Component {
+class ButtonsMainCard extends Component {
     clickBtnTranslate = e => {
         console.log('tranlate click');
         this.props.clickTranslate(e);
@@ -27,8 +27,8 @@ class ButtonsMainCardDesktop extends Component {
                         <p className="btn-name">Save</p>
                     </button>
                 </a>
-                <a className="hvr-pulse-shrink">
-                    <button className="btn-desktop" type="button" onClick={this.clickBtnTranslate}>
+                <a className="hvr-pulse-shrink" onClick={this.clickBtnTranslate}>
+                    <button className="btn-desktop" type="button">
                         <i className="fas fa-globe-europe" />
                         <p className="btn-name">Translate</p>
                     </button>
@@ -38,4 +38,4 @@ class ButtonsMainCardDesktop extends Component {
     }
 }
 
-export default ButtonsMainCardDesktop;
+export default ButtonsMainCard;
