@@ -2,6 +2,7 @@ import React from 'react';
 import Subtitle from './Subtitle';
 import LanguageOption from '../user/languageOption';
 import Searchbox from '../Searchbox';
+import { translate } from '../../services/translate';
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -47,6 +48,11 @@ class Main extends React.Component {
                     searchTerm,
                 });
             });
+
+        const userSetting = JSON.parse(localStorage.getItem('userSetting'));
+        translate(userSetting.language, searchTerm, 'fi').then(dataTranslate => {
+            document.querySelector('.word-translate').innerHTML = ` ${dataTranslate} `;
+        });
     };
 
     render() {
@@ -72,7 +78,12 @@ class Main extends React.Component {
                         <LanguageOption />
                     </div>
                     <div className="word-info">
-                        Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
+                        <p>
+                            Word <span>{searchTerm}</span> is in {subtitles.length} subtitles
+                        </p>
+                        <p>
+                            {searchTerm} =<span className="word-translate"> </span>
+                        </p>
                     </div>
                 </div>
                 {renderSubtitles}
