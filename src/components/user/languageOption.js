@@ -3,6 +3,20 @@ import React from 'react';
 class LanguageOption extends React.Component {
     state = { language: 'en' };
 
+    componentDidMount() {
+        if (localStorage.getItem('userSetting') === null) {
+            localStorage.setItem('userSetting', JSON.stringify({ language: 'en' }));
+        } else {
+            const userSetting = JSON.parse(localStorage.getItem('userSetting'));
+            this.setState({ language: userSetting.language });
+        }
+    }
+
+    handleChange = e => {
+        this.setState({ language: e.target.value });
+        localStorage.setItem('userSetting', JSON.stringify({ language: e.target.value }));
+    };
+
     render() {
         return (
             <div>

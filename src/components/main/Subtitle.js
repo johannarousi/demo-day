@@ -18,7 +18,8 @@ class Subtitle extends React.Component {
         if (numTranslate > 0) {
             clickTranslate.innerHTML = '';
         } else {
-            translate('en', translateText, 'fi').then(dataTranslate => {
+            const userSetting = JSON.parse(localStorage.getItem('userSetting'));
+            translate(userSetting.language, translateText, 'fi').then(dataTranslate => {
                 clickTranslate.innerHTML = ` ${dataTranslate} `;
             });
         }

@@ -67,14 +67,12 @@ class Main extends React.Component {
         return (
             <main className="content">
                 <Searchbox searchWord={this.searchWord} />
-                <div className="subtitle-wrapper">
-                    <div className="subtitle">
-                        <p className="subtitle-para">
-                            Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
-                        </p>
-                    </div>
-                    <div className="sub-btn-below">
+                <div className="word-wrapper">
+                    <div className="language-option">
                         <LanguageOption />
+                    </div>
+                    <div className="word-info">
+                        Word <span>{searchTerm}</span> is in {subtitles.length} subtitles{' '}
                     </div>
                 </div>
                 {renderSubtitles}
