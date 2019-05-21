@@ -13,7 +13,7 @@ export class WordList extends Component {
     componentDidMount() {
         /* check TotalList and MyList */
         if (sessionStorage.getItem('totalList') === null) {
-            const urlWordList = `https://yle-subtitle.herokuapp.com/api/list/100`;
+            const urlWordList = `https://yle-subtitle.herokuapp.com/api/list/2000`;
             fetch(urlWordList)
                 .then(response => response.json())
                 .then(data => {
@@ -29,18 +29,16 @@ export class WordList extends Component {
         }
         // get mylist
         if (localStorage.getItem('myList') === null) {
-            sessionStorage.setItem('myList', []);
+            localStorage.setItem('myList', []);
         } else {
             const myList = JSON.parse(localStorage.getItem('myList'));
             this.setState({ myList });
         }
     }
 
-    clickWord = e => {
+    clickMore = e => {
         const clickWord = e.currentTarget.id;
-
         const clickParent = e.currentTarget.closest('.word_wrapper');
-
         const checkClick = clickParent.querySelector('.subtitle');
         const numSubtible = checkClick.textContent.length;
 
@@ -48,6 +46,7 @@ export class WordList extends Component {
             console.log(checkClick.textContent.length);
             clickParent.querySelector('.subtitle').innerHTML = '';
         } else {
+            // show relate sentence
             const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${clickWord}`;
             fetch(urlWord)
                 .then(response => response.json())
@@ -62,9 +61,37 @@ export class WordList extends Component {
                         ${subtitle.subtitle}
                         </p>`
                     );
-
-                    checkClick.innerHTML = `${sub.join('')}`;
+                    const html = ` 
+                        <div>
+                           -----
+                            ${sub.join('')}
+                            <button  type="button">
+                                Show All
+                            </button>
+                        </div>`;
+                    checkClick.insertAdjacentHTML('beforeEnd', html);
                 });
+            // show save sentence
+            const myList = JSON.parse(localStorage.getItem('mySentence'));
+            console.log(myList);
+            if (myList) {
+                const findItem = myList.find(item => item.word == clickWord);
+                console.log(findItem);
+                if (findItem) {
+                    const sub = findItem.sentences.map(
+                        subtitle => `<p style={{ fontStyle: 'italic' }} key={subtitle._id}>
+                                ${subtitle}
+                                </p>`
+                    );
+                    const html = `
+                        <div>
+                            <h4>Save Sentence:</h4>
+                            ${sub.join('')} 
+                        </div>
+                        `;
+                    checkClick.insertAdjacentHTML('afterBegin', html);
+                }
+            }
         }
     };
 
@@ -102,7 +129,7 @@ export class WordList extends Component {
                 <button onClick={() => this.removeWord(word.name)} type="button">
                     Remove
                 </button>
-                <button onClick={this.clickWord} type="button" id={word.name}>
+                <button onClick={this.clickMore} type="button" id={word.name}>
                     More
                 </button>
             </div>

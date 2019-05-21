@@ -6,6 +6,11 @@ class ButtonsMainCard extends Component {
         this.props.clickTranslate(e);
     };
 
+    clickBtnSave = (e, clickWord) => {
+        console.log('save click');
+        this.props.clickSave(e, clickWord);
+    };
+
     render() {
         return (
             <div className="buttons-main-card">
@@ -21,7 +26,10 @@ class ButtonsMainCard extends Component {
                     </button>
                 </a>
 
-                <a className="hvr-pulse-shrink">
+                <a
+                    className="hvr-pulse-shrink"
+                    onClick={e => this.clickBtnSave(e, this.props.searchTerm)}
+                >
                     <button className="btn-desktop" type="button">
                         <i className="far fa-save" />
                         <p className="btn-name">Save</p>

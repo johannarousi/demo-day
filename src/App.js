@@ -19,7 +19,7 @@ class App extends Component {
                     <Switch>
                         <Route path="/words" component={WordList} />
                         <Route path="/list" component={MyList} />
-                        <Route path="/" component={Main} />
+                        <Route path="/:word?" component={Main} />
                     </Switch>
                     <Footer />
                     <FooterDesktop />

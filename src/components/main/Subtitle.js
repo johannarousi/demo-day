@@ -23,6 +23,56 @@ class Subtitle extends React.Component {
         }
     };
 
+    onClickSave = (e, clickWord) => {
+        const parentSubtitle = e.currentTarget.closest('.subtitle-wrapper');
+        const translateText = parentSubtitle
+            .querySelector('.subtitle-para')
+            .textContent.replace(/[\n]/gi, '- ');
+        console.log(translateText, '\n', clickWord);
+        // add word to my list in not there
+        if (localStorage.getItem('myList') === null) {
+            localStorage.setItem('myList', JSON.stringify([clickWord]));
+        } else {
+            const myList = JSON.parse(localStorage.getItem('myList'));
+            if (!myList.includes(clickWord)) {
+                const addList = [...myList, clickWord];
+                localStorage.setItem('myList', JSON.stringify(addList));
+            }
+        }
+
+        // add mySentence
+        if (localStorage.getItem('mySentence') === null) {
+            localStorage.setItem(
+                'mySentence',
+                JSON.stringify([{ word: clickWord, sentences: [translateText] }])
+            );
+        } else {
+            const myList = JSON.parse(localStorage.getItem('mySentence'));
+            console.log('myList:', myList);
+            // find and if find replace if not add
+            const findItem = myList.find(item => item.word == clickWord);
+            let addList = [];
+            console.log(findItem);
+
+            if (findItem) {
+                addList = myList.map(item => {
+                    if (item.word == clickWord) {
+                        item.sentences.push(translateText);
+                        return {
+                            word: clickWord,
+                            sentences: Array.from(new Set(item.sentences)),
+                        };
+                    }
+                    return item;
+                });
+            } else {
+                addList = [...myList, { word: clickWord, sentences: [translateText] }];
+            }
+            console.log(addList);
+            localStorage.setItem('mySentence', JSON.stringify(addList));
+        }
+    };
+
     render() {
         const movieNow = { name: '', link: '' };
         const { movies, subtitle, searchTerm } = this.props;
@@ -63,7 +113,12 @@ class Subtitle extends React.Component {
                     <p className="subtitle-para translate" />
                 </div>
                 <div className="sub-btn-below">
-                    <ButtonsMainCard movieNow={movieNow} clickTranslate={this.onClickTranslate} />
+                    <ButtonsMainCard
+                        movieNow={movieNow}
+                        searchTerm={searchTerm}
+                        clickTranslate={this.onClickTranslate}
+                        clickSave={this.onClickSave}
+                    />
                 </div>
             </div>
         );

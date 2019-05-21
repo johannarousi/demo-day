@@ -23,6 +23,14 @@ class Main extends React.Component {
                 });
             });
 
+        const { match, location } = this.props;
+        const wordUrl = match.params.word;
+
+        if (wordUrl) {
+            console.log('do something');
+
+            this.searchWord(wordUrl);
+        }
         // translate('en', 'kolme', 'fi').then(data => console.log(data));
     }
 
@@ -45,14 +53,16 @@ class Main extends React.Component {
         // console.log(this.props.searchTerm);
         const { subtitles, searchTerm } = this.state;
 
-        const renderSubtitles = subtitles.map(subtitle => (
-            <Subtitle
-                key={subtitle._id}
-                subtitle={subtitle}
-                movies={this.state.movies}
-                searchTerm={searchTerm}
-            />
-        ));
+        const renderSubtitles = subtitles
+            .slice(0, 30)
+            .map(subtitle => (
+                <Subtitle
+                    key={subtitle._id}
+                    subtitle={subtitle}
+                    movies={this.state.movies}
+                    searchTerm={searchTerm}
+                />
+            ));
 
         return (
             <main className="content">

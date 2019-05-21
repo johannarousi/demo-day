@@ -13,7 +13,7 @@ export class WordList extends Component {
     componentDidMount() {
         /* check TotalList and MyList */
         if (sessionStorage.getItem('totalList') === null) {
-            const urlWordList = `https://yle-subtitle.herokuapp.com/api/list/100`;
+            const urlWordList = `https://yle-subtitle.herokuapp.com/api/list/2000`;
             fetch(urlWordList)
                 .then(response => response.json())
                 .then(data => {
@@ -29,7 +29,7 @@ export class WordList extends Component {
         }
         // get mylist
         if (localStorage.getItem('myList') === null) {
-            sessionStorage.setItem('myList', []);
+            localStorage.setItem('myList', JSON.stringify([]));
         } else {
             const myList = JSON.parse(localStorage.getItem('myList'));
             this.setState({ myList });
@@ -79,6 +79,11 @@ export class WordList extends Component {
         localStorage.setItem('myList', JSON.stringify(addList));
     };
 
+    clickShowAll = wordName => {
+        console.log(wordName);
+        this.props.history.push(`/${wordName}`);
+    };
+
     render() {
         const { totalList, myList } = this.state;
         // console.log(datalist);
@@ -90,7 +95,7 @@ export class WordList extends Component {
         };
         console.log(myList);
         // console.log(totalList);
-        const showlist = [...totalList].filter(word => !myList.includes(word.name));
+        const showlist = [...totalList].filter(word => !myList.includes(word.name)).splice(0, 200);
         console.log(showlist);
 
         const list = showlist.map(word => (
@@ -104,6 +109,9 @@ export class WordList extends Component {
                 </button>
                 <button onClick={this.clickWord} type="button" id={word.name}>
                     More
+                </button>
+                <button onClick={() => this.clickShowAll(word.name)} type="button">
+                    Show All
                 </button>
             </div>
         ));

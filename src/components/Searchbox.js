@@ -8,7 +8,7 @@ class Searchbox extends React.Component {
 
     handleInput = e => {
         this.setState({ searchInput: e.currentTarget.value });
-        this.props.searchWord(e.currentTarget.value);
+        this.props.searchWord(e.currentTarget.value.toLowerCase().trim());
     };
 
     render() {
