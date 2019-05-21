@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { fnTotalList, fnMyList, fnAddWordToMyList } from '../../services/funData';
 
 export class WordList extends Component {
     state = {
@@ -11,29 +12,11 @@ export class WordList extends Component {
     };
 
     componentDidMount() {
-        /* check TotalList and MyList */
-        if (sessionStorage.getItem('totalList') === null) {
-            const urlWordList = `https://yle-subtitle.herokuapp.com/api/list/2000`;
-            fetch(urlWordList)
-                .then(response => response.json())
-                .then(data => {
-                    // console.log(data[0].frequency);
-                    this.setState({
-                        totalList: data,
-                    });
-                    sessionStorage.setItem('totalList', JSON.stringify(data));
-                });
-        } else {
-            const totalList = JSON.parse(sessionStorage.getItem('totalList'));
+        fnTotalList().then(totalList => {
             this.setState({ totalList });
-        }
+        });
         // get mylist
-        if (localStorage.getItem('myList') === null) {
-            localStorage.setItem('myList', JSON.stringify([]));
-        } else {
-            const myList = JSON.parse(localStorage.getItem('myList'));
-            this.setState({ myList });
-        }
+        this.setState({ myList: fnMyList() });
     }
 
     clickWord = e => {
@@ -72,11 +55,9 @@ export class WordList extends Component {
         console.log(wordName);
         // copying the datalist from state
         const { myList } = this.state;
-        const addList = [...myList, wordName];
         this.setState({
-            myList: addList,
+            myList: fnAddWordToMyList(myList, wordName),
         });
-        localStorage.setItem('myList', JSON.stringify(addList));
     };
 
     clickShowAll = wordName => {
@@ -93,10 +74,9 @@ export class WordList extends Component {
             margin: '3% auto',
             padding: '2% 0',
         };
-        console.log(myList);
-        // console.log(totalList);
-        const showlist = [...totalList].filter(word => !myList.includes(word.name)).splice(0, 200);
-        console.log(showlist);
+        const showlist = [...totalList]
+            .filter(word => !myList.find(item => item.word == word.name))
+            .splice(0, 200);
 
         const list = showlist.map(word => (
             <div style={styles} key={word._id} className="word_wrapper">
@@ -107,11 +87,11 @@ export class WordList extends Component {
                 <button onClick={() => this.addWord(word.name)} type="button">
                     Add
                 </button>
-                <button onClick={this.clickWord} type="button" id={word.name}>
+                {/* <button onClick={this.clickWord} type="button" id={word.name}>
                     More
-                </button>
+                </button> */}
                 <button onClick={() => this.clickShowAll(word.name)} type="button">
-                    Show All
+                    More
                 </button>
             </div>
         ));

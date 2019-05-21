@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from '../../services/translate';
 import ButtonsMainCard from './ButtonsMainCard';
+import { fnAddSentenceToMyList } from '../../services/funData';
 
 class Subtitle extends React.Component {
     onClickTranslate = e => {
@@ -28,49 +29,7 @@ class Subtitle extends React.Component {
         const translateText = parentSubtitle
             .querySelector('.subtitle-para')
             .textContent.replace(/[\n]/gi, '- ');
-        console.log(translateText, '\n', clickWord);
-        // add word to my list in not there
-        if (localStorage.getItem('myList') === null) {
-            localStorage.setItem('myList', JSON.stringify([clickWord]));
-        } else {
-            const myList = JSON.parse(localStorage.getItem('myList'));
-            if (!myList.includes(clickWord)) {
-                const addList = [...myList, clickWord];
-                localStorage.setItem('myList', JSON.stringify(addList));
-            }
-        }
-
-        // add mySentence
-        if (localStorage.getItem('mySentence') === null) {
-            localStorage.setItem(
-                'mySentence',
-                JSON.stringify([{ word: clickWord, sentences: [translateText] }])
-            );
-        } else {
-            const myList = JSON.parse(localStorage.getItem('mySentence'));
-            console.log('myList:', myList);
-            // find and if find replace if not add
-            const findItem = myList.find(item => item.word == clickWord);
-            let addList = [];
-            console.log(findItem);
-
-            if (findItem) {
-                addList = myList.map(item => {
-                    if (item.word == clickWord) {
-                        item.sentences.push(translateText);
-                        return {
-                            word: clickWord,
-                            sentences: Array.from(new Set(item.sentences)),
-                        };
-                    }
-                    return item;
-                });
-            } else {
-                addList = [...myList, { word: clickWord, sentences: [translateText] }];
-            }
-            console.log(addList);
-            localStorage.setItem('mySentence', JSON.stringify(addList));
-        }
+        fnAddSentenceToMyList(clickWord, translateText);
     };
 
     render() {
@@ -83,7 +42,7 @@ class Subtitle extends React.Component {
                     // console.log(movie);
                     movieNow.name = movie.name;
                     let timeMovie = subtitle.timeBegin.split(/[:.]/);
-                    const timeRewind = 0;
+                    const timeRewind = 1;
                     timeMovie =
                         parseInt(timeMovie[0]) * 60 * 60 +
                         parseInt(timeMovie[1]) * 60 +
