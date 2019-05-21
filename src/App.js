@@ -6,6 +6,7 @@ import Main from './components/main/Main';
 import Footer from './components/Footer';
 import FooterDesktop from './components/FooterDesktop';
 import WordList from './components/word/WordList';
+import MyList from './components/word/MyList';
 // import HeaderDesktop from './components/HeaderDesktop';
 // import MainDesktop from './components/MainDesktop';
 
@@ -17,7 +18,7 @@ class App extends Component {
                     <Header />
                     <Switch>
                         <Route path="/words" component={WordList} />
-                        <Route path="/list" component={() => <div> My List</div>} />
+                        <Route path="/list" component={MyList} />
                         <Route path="/" component={Main} />
                     </Switch>
                     <Footer />
