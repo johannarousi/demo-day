@@ -68,15 +68,15 @@ export class WordList extends Component {
         }
     };
 
-    addWord = wordName => {
+    removeWord = wordName => {
         console.log(wordName);
         // copying the datalist from state
         const { myList } = this.state;
-        const addList = [...myList, wordName];
+        const removeList = myList.filter(word => word != wordName);
         this.setState({
-            myList: addList,
+            myList: removeList,
         });
-        localStorage.setItem('myList', JSON.stringify(addList));
+        localStorage.setItem('myList', JSON.stringify(removeList));
     };
 
     render() {
@@ -90,7 +90,7 @@ export class WordList extends Component {
         };
         console.log(myList);
         // console.log(totalList);
-        const showlist = [...totalList].filter(word => !myList.includes(word.name));
+        const showlist = [...totalList].filter(word => myList.includes(word.name));
         console.log(showlist);
 
         const list = showlist.map(word => (
@@ -99,8 +99,8 @@ export class WordList extends Component {
                     Word <span>{word.name}</span> appears <span>{word.frequency}</span> times.
                 </p>
                 <div className="subtitle" />
-                <button onClick={() => this.addWord(word.name)} type="button">
-                    Add
+                <button onClick={() => this.removeWord(word.name)} type="button">
+                    Remove
                 </button>
                 <button onClick={this.clickWord} type="button" id={word.name}>
                     More
