@@ -1,6 +1,7 @@
 import React from 'react';
 import { translate } from '../../services/translate';
 import ButtonsMainCard from './ButtonsMainCard';
+import { fnAddSentenceToMyList } from '../../services/funData';
 
 class Subtitle extends React.Component {
     onClickTranslate = e => {
@@ -17,10 +18,19 @@ class Subtitle extends React.Component {
         if (numTranslate > 0) {
             clickTranslate.innerHTML = '';
         } else {
-            translate('en', translateText, 'fi').then(dataTranslate => {
+            const userSetting = JSON.parse(localStorage.getItem('userSetting'));
+            translate(userSetting.language, translateText, 'fi').then(dataTranslate => {
                 clickTranslate.innerHTML = ` ${dataTranslate} `;
             });
         }
+    };
+
+    onClickSave = (e, clickWord) => {
+        const parentSubtitle = e.currentTarget.closest('.subtitle-wrapper');
+        const translateText = parentSubtitle
+            .querySelector('.subtitle-para')
+            .textContent.replace(/[\n]/gi, '- ');
+        fnAddSentenceToMyList(clickWord, translateText);
     };
 
     render() {
@@ -33,7 +43,7 @@ class Subtitle extends React.Component {
                     // console.log(movie);
                     movieNow.name = movie.name;
                     let timeMovie = subtitle.timeBegin.split(/[:.]/);
-                    const timeRewind = 0;
+                    const timeRewind = 1;
                     timeMovie =
                         parseInt(timeMovie[0]) * 60 * 60 +
                         parseInt(timeMovie[1]) * 60 +
@@ -63,7 +73,12 @@ class Subtitle extends React.Component {
                     <p className="subtitle-para translate" />
                 </div>
                 <div className="sub-btn-below">
-                    <ButtonsMainCard movieNow={movieNow} clickTranslate={this.onClickTranslate} />
+                    <ButtonsMainCard
+                        movieNow={movieNow}
+                        searchTerm={searchTerm}
+                        clickTranslate={this.onClickTranslate}
+                        clickSave={this.onClickSave}
+                    />
                 </div>
             </div>
         );
