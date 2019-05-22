@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import firebase from 'firebase';
 import 'firebase/firestore';
 import 'firebase/auth';
@@ -16,21 +16,52 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 function SignIn() {
-    const [user, setUser] = useState(null);
+    const user = useAuth();
 
     const handleSignin = async () => {
         const provider = new firebase.auth.GoogleAuthProvider();
-        const result = await firebase.auth().signInWithPopup(provider);
-        setUser(result.user);
+        await firebase.auth().signInWithPopup(provider);
     };
 
     return user ? (
-        <span> Steve Phuc</span>
+        <div>
+            {/* <img src={user.photoURL} /> */}
+            <button> {user.displayName}</button>
+            <button
+                type="button"
+                onClick={() => {
+                    firebase.auth().signOut();
+                }}
+            >
+                LogOut
+            </button>
+        </div>
     ) : (
         <button onClick={handleSignin} type="button">
             Please Log in
         </button>
     );
+}
+
+function useAuth() {
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        firebase.auth().onAuthStateChanged(firebaseUser => {
+            if (firebaseUser) {
+                const user = {
+                    displayName: firebaseUser.displayName,
+                    photoURL: firebaseUser.photoURL,
+                    uid: firebaseUser.uid,
+                };
+                setUser(user);
+            } else {
+                setUser(null);
+            }
+        });
+    }, []);
+
+    return user;
 }
 
 export default SignIn;
