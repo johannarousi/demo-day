@@ -4,6 +4,7 @@ import Searchbox from './Searchbox';
 import SearchboxDesktop from './SearchboxDesktop';
 import birch from '../img/birch.jpg';
 import flag from '../img/flag.jpg';
+import SignIn from './user/SignIn';
 
 class Header extends Component {
     // state = {
@@ -32,7 +33,7 @@ class Header extends Component {
                 <div className="layer" />
                 <div className="header-title">Demo</div>
                 <button type="button" className="header-log">
-                    Log in
+                    <SignIn />
                 </button>
             </header>
         );
