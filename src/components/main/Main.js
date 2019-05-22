@@ -3,6 +3,7 @@ import Subtitle from './Subtitle';
 import LanguageOption from '../user/languageOption';
 import Searchbox from '../Searchbox';
 import { translate } from '../../services/translate';
+import WordInfo from './WordInfo';
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -10,6 +11,7 @@ class Main extends React.Component {
         movies: {},
         subtitles: [],
         searchTerm: '',
+        wordTranslate: '',
     };
 
     componentDidMount() {
@@ -50,14 +52,15 @@ class Main extends React.Component {
             });
 
         const userSetting = JSON.parse(localStorage.getItem('userSetting'));
-        translate(userSetting.language, searchTerm, 'fi').then(dataTranslate => {
-            document.querySelector('.word-translate').innerHTML = ` ${dataTranslate} `;
+        translate(userSetting.language, searchTerm, 'fi').then(wordTranslate => {
+            // document.querySelector('.word-translate').innerHTML = ` ${dataTranslate} `;
+            this.setState({ wordTranslate });
         });
     };
 
     render() {
         // console.log(this.props.searchTerm);
-        const { subtitles, searchTerm } = this.state;
+        const { subtitles, searchTerm, wordTranslate } = this.state;
 
         const renderSubtitles = subtitles
             .slice(0, 30)
@@ -77,14 +80,13 @@ class Main extends React.Component {
                     <div className="language-option">
                         <LanguageOption />
                     </div>
-                    <div className="word-info">
-                        <p>
-                            Word <span>{searchTerm}</span> is in {subtitles.length} subtitles
-                        </p>
-                        <p>
-                            {searchTerm} =<span className="word-translate"> </span>
-                        </p>
-                    </div>
+                    {subtitles.length > 0 && (
+                        <WordInfo
+                            subtitles={subtitles}
+                            searchTerm={searchTerm}
+                            wordTranslate={wordTranslate}
+                        />
+                    )}
                 </div>
                 {renderSubtitles}
             </main>
