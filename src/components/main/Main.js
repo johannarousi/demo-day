@@ -11,7 +11,6 @@ class Main extends React.Component {
         movies: {},
         subtitles: [],
         searchTerm: '',
-        wordTranslate: '',
     };
 
     componentDidMount() {
@@ -50,17 +49,11 @@ class Main extends React.Component {
                     searchTerm,
                 });
             });
-
-        const userSetting = JSON.parse(localStorage.getItem('userSetting'));
-        translate(userSetting.language, searchTerm, 'fi').then(wordTranslate => {
-            // document.querySelector('.word-translate').innerHTML = ` ${dataTranslate} `;
-            this.setState({ wordTranslate });
-        });
     };
 
     render() {
         // console.log(this.props.searchTerm);
-        const { subtitles, searchTerm, wordTranslate } = this.state;
+        const { subtitles, searchTerm } = this.state;
 
         const renderSubtitles = subtitles
             .slice(0, 30)
@@ -81,11 +74,7 @@ class Main extends React.Component {
                         <LanguageOption />
                     </div>
                     {subtitles.length > 0 && (
-                        <WordInfo
-                            subtitles={subtitles}
-                            searchTerm={searchTerm}
-                            wordTranslate={wordTranslate}
-                        />
+                        <WordInfo subtitles={subtitles} searchTerm={searchTerm} />
                     )}
                 </div>
                 {renderSubtitles}
