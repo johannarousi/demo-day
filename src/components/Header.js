@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import { CoverageMap } from 'istanbul-lib-coverage';
 import Searchbox from './Searchbox';
 import SearchboxDesktop from './SearchboxDesktop';
@@ -30,7 +31,7 @@ class Header extends Component {
         return (
             <header className="header">
                 <div className="layer" />
-                <div className="header-title">Demo</div>
+                <NavLink to="/" className="header-title">Finlary</NavLink>
                 <button type="button" className="header-log">
                     Log in
                 </button>
