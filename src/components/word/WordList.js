@@ -13,6 +13,8 @@ export class WordList extends Component {
 
     componentDidMount() {
         fnTotalList().then(totalList => {
+            console.log(totalList);
+
             this.setState({ totalList });
         });
         // get mylist

@@ -53,9 +53,7 @@ export class WordList extends Component {
                     </p>
 
                     <div className="subtitle">
-                        {item.sentences.map(sentence => (
-                            <p>{sentence}</p>
-                        ))}
+                        {item.sentences && item.sentences.map(sentence => <p>{sentence}</p>)}
                     </div>
                     <button onClick={() => this.removeWord(item.word)} type="button">
                         Remove

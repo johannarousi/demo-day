@@ -38,6 +38,9 @@ class Main extends React.Component {
 
     searchWord = searchTerm => {
         if (searchTerm.length < 2) {
+            this.setState({
+                subtitles: [],
+            });
             return;
         }
         const urlWord = `https://yle-subtitle.herokuapp.com/api/word/${searchTerm}`;
