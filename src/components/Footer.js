@@ -12,7 +12,7 @@ const Footer = () => (
 
         <NavLink to="/" className="btn btn-search">
             <button type="button" className="btn-wrap">
-                <i class="fas fa-h-square"></i>
+                <i className="fas fa-h-square" />
                 <p className="font-title">Home</p>
             </button>
         </NavLink>

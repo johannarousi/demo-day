@@ -100,14 +100,16 @@ export class WordList extends Component {
         ));
 
         return (
-            <div className="content">
-                <div>
+            <div className="main">
+                <div className="searchbox">
                     <p className="archivement">
-                        Archievement: <strong>{myList.length}</strong> /{' '}
-                        <strong>{totalList.length}</strong> common words.
+                        Progress: <strong>{myList.length}</strong> /{' '}
+                        <strong>{totalList.length}</strong> words.
                     </p>
                 </div>
-                <div className="subtitle-container">{list}</div>
+                <div className="content">
+                    <div className="subtitle-container">{list}</div>
+                </div>
             </div>
         );
     }

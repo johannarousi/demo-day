@@ -67,7 +67,7 @@ class Main extends React.Component {
             ));
 
         return (
-            <main className="content">
+            <main>
                 <Searchbox searchWord={this.searchWord} />
                 <div className="word-wrapper">
                     <LanguageOption />
@@ -75,7 +75,9 @@ class Main extends React.Component {
                         <WordInfo subtitles={subtitles} searchTerm={searchTerm} />
                     )}
                 </div>
-                <div className="subtitle-container">{renderSubtitles}</div>
+                <div className="content">
+                    <div className="subtitle-container">{renderSubtitles}</div>
+                </div>
             </main>
         );
     }
