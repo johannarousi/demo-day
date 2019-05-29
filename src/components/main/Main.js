@@ -4,6 +4,7 @@ import LanguageOption from '../user/languageOption';
 import Searchbox from '../Searchbox';
 import { translate } from '../../services/translate';
 import WordInfo from './WordInfo';
+import Info from '../Info';
 // import { translate } from '../services/translate';
 
 class Main extends React.Component {
@@ -70,9 +71,13 @@ class Main extends React.Component {
             <main>
                 <Searchbox searchWord={this.searchWord} />
                 <div className="word-wrapper">
-                    <LanguageOption />
-                    {subtitles.length > 0 && (
+                    <div className="language-option">
+                        <LanguageOption />
+                    </div>
+                    {subtitles.length > 0 ? (
                         <WordInfo subtitles={subtitles} searchTerm={searchTerm} />
+                    ) : (
+                        <Info />
                     )}
                 </div>
                 <div className="content">
