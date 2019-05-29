@@ -80,7 +80,7 @@ class Main extends React.Component {
                         <Info />
                     )}
                 </div>
-                {renderSubtitles}
+                <div className="subtitle-container">{renderSubtitles}</div>
             </main>
         );
     }

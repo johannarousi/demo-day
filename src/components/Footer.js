@@ -12,8 +12,8 @@ const Footer = () => (
 
         <NavLink to="/" className="btn btn-search">
             <button type="button" className="btn-wrap">
-                <i className="fas fa-search fa-footer-search" />
-                <p className="font-title">Search</p>
+                <i class="fas fa-h-square"></i>
+                <p className="font-title">Home</p>
             </button>
         </NavLink>
 
