@@ -36,43 +36,50 @@ export class WordList extends Component {
     render() {
         const { myList } = this.state;
         // console.log(datalist);
-        const styles = {
-            background: '#fff',
-            width: '85%',
-            margin: '3% auto',
-            padding: '2% 0',
-        };
         console.log(myList);
 
         const list = myList.map((item, index) => {
             console.log(item);
             return (
-                <div style={styles} key={index} className="word_wrapper">
-                    <p>
-                        <span>{item.word}</span>
-                    </p>
-
+                <div className="subtitle-wrapper">
                     <div className="subtitle">
+                        <p className="subtitle-para">
+                            <span>{item.word}</span>
+                        </p>
+                    </div>
+
+                    <div>
                         {item.sentences.map(sentence => (
-                            <p>{sentence}</p>
+                            <p className="subtitle-para">{sentence}</p>
                         ))}
                     </div>
-                    <button onClick={() => this.removeWord(item.word)} type="button">
-                        Remove
-                    </button>
-                    <button onClick={() => this.clickMore(item.word)} type="button">
-                        More
-                    </button>
+
+                    <div className="buttons-main-card">
+                        <a className="hvr-pulse-shrink" onClick={() => this.removeWord(item.word)}>
+                            <button className="btn-desktop" type="button">
+                                <i className="far fa-minus-square" />
+                                <p className="btn-name">Remove</p>
+                            </button>
+                        </a>
+                        <a className="hvr-pulse-shrink" onClick={() => this.clickMore(item.word)}>
+                            <button className="btn-desktop" type="button">
+                                <i className="far fa-plus-square" />
+                                <p className="btn-name">More</p>
+                            </button>
+                        </a>
+                    </div>
                 </div>
             );
         });
 
         return (
-            <div>
+            <div className="content">
                 <div>
-                    <h3>Your Vocabulary: {myList.length}</h3>
+                    <p className="archivement">
+                        Your Vocabulary: <strong>{myList.length}</strong>
+                    </p>
                 </div>
-                {list}
+                <div className="subtitle-container">{list}</div>
             </div>
         );
     }

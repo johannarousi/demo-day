@@ -72,14 +72,12 @@ class Subtitle extends React.Component {
                     />
                     <p className="subtitle-para translate" />
                 </div>
-                <div className="sub-btn-below">
-                    <ButtonsMainCard
-                        movieNow={movieNow}
-                        searchTerm={searchTerm}
-                        clickTranslate={this.onClickTranslate}
-                        clickSave={this.onClickSave}
-                    />
-                </div>
+                <ButtonsMainCard
+                    movieNow={movieNow}
+                    searchTerm={searchTerm}
+                    clickTranslate={this.onClickTranslate}
+                    clickSave={this.onClickSave}
+                />
             </div>
         );
     }
