@@ -22,6 +22,11 @@ class App extends Component {
                         <Route path="/:word?" component={Main} />
                     </Switch>
                     <Footer />
+                    <div>
+                        <a href="#top" className="anchor scroll-to-top">
+                            <i className="fas fa-angle-up" />
+                        </a>
+                    </div>
                     <FooterDesktop />
                 </div>
             </BrowserRouter>

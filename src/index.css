@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -26,7 +27,7 @@ button {
 .phone-screen {
   width: 100%;
   max-width: 540px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   border-radius: 10px;
   display: flex;
@@ -84,12 +85,12 @@ button {
   color: #f6f6f6;
   font-size: 16px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 /* === SEARCHBOX ==================================*/
 
 .searchbox {
-  flex: 1;
   background-color: #f6f6f6;
   top: 60px;
   height: 10vh;
@@ -143,15 +144,50 @@ main {
 }
 
 .language-option {
-  font-size: 20px;
-  text-align: left;
-  margin-left: 20px;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
   margin-bottom: 30px;
 }
 
+.language-option label {
+  width: 10%;
+}
+
 .language-option label select {
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 16px;
+  width: 45%;
+  background-color: #DCDCDC;
+  border: none;
+  cursor: pointer;
+}
+
+/* Info.js, information and instructions for the app */
+.app-information {
+  background: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-information h1 {
+  flex: 1;
+  padding: 2vh 0;
+}
+
+.app-information p, .app-information ul {
+  flex: 1;
+  text-align: left;
+  padding: 2vh 3vw;
+  line-height: 25px;
+}
+
+.app-information ul {
+  list-style: circle;
 }
 
 .content {
@@ -174,7 +210,7 @@ main {
   flex: 100%;
   margin: 30px 0;
   background-color: #f5f5f5;
-  border-radius: 10px;
+  border-radius: 5px;
   box-shadow: 0px 2px 20px -13px rgba(38, 38, 38, 1);
   width: 378px;
   /* max-height: 130px; */
@@ -188,7 +224,7 @@ main {
 
 .subtitle-para {
   flex: 85vw;
-  padding-left: 20px;
+  padding: 0 10px 0 20px;
 }
 
 .sub-btn-below {
@@ -298,7 +334,7 @@ main {
   animation-direction: alternate;
   cursor: pointer;
   background-color: #DCDCDC;
-  border-radius: 10%;
+  border-radius: 5px;
 }
 
 span {
@@ -360,6 +396,10 @@ span {
 
 .footer .btn:hover {
   transform: scale(1.1);
+}
+
+.footer .btn:active {
+  background: rgb(0,0,0,0.5);
 }
 
 .btn-word,
@@ -501,13 +541,13 @@ span {
 
   .searchbox {
     top: 10px;
-    left: 29.5vw;
+    left: 32vw;
     height: 5vh;
     min-height: 50px;
     padding: 0;
-    border-radius: 30px;
+    border-radius: 50px;
     min-width: 250px;
-    width: 40vw;
+    width: 35vw;
   }
 
   .search-bar {
@@ -526,7 +566,21 @@ span {
   }
 
   .language-option {
-    text-align: center;}
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .language-option label select {
+    width: 45%;
+  }
+
+  .app-information {
+    max-width: 700px;
+    min-width: 500px;
+    padding-left: 60px;
+  }
 
   .content {
     max-width: 1200px;
@@ -564,8 +618,13 @@ span {
     flex-direction: column;
     padding-right: 10px;
     padding-left: 10px;
+    align-items: center !important;
   }
 
+  .footer .btn:visited {
+    background: rgb(0,0,0,0.1);
+  }
+/* 
   .btn-word {
     align-items: flex-end !important;
   }
@@ -576,7 +635,7 @@ span {
 
   .btn-list {
     align-items: flex-start !important;
-  }
+  } */
 
   .fa-wikipedia-w {
     flex: 0 1;
@@ -585,7 +644,7 @@ span {
 
   .fa-list {
     flex: 0 1;
-    padding-left: 10px;
+    padding-left: 8px;
     text-align: right;
   }
 
@@ -598,19 +657,29 @@ span {
     flex: 0 1 60px;
     text-shadow: 0px 0px 20px #001633;
   }
-}
 
-/* Info.js, information and instructions for the app */
-.app-information {
-  background: #fff;
-  width: 90vw;
-  margin-top: 2vh;
-}
+  .anchor {
+    text-decoration: none;
 
-.app-information h1 {
-  padding: 2vh 0;
-}
-
-.app-information p {
-  padding: 2vh 3vw;
+  }
+  
+  .scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .fa-angle-up {
+    color: white;
+    background: #D6D6D6;
+    padding: 13px 20px;
+    font-size: 30px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .fa-angle-up:hover {
+    background: #808080;
+  }
 }
