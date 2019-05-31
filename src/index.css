@@ -24,9 +24,12 @@ button {
   text-decoration: none;
 }
 
+a {
+  color: white;
+}
+
 .phone-screen {
   width: 100%;
-  max-width: 540px;
   height: 100%;
   margin: 0 auto;
   border-radius: 10px;
@@ -95,6 +98,7 @@ button {
 /* === SEARCHBOX ==================================*/
 
 .searchbox {
+  width: 100%;
   background-color: #f6f6f6;
   top: 60px;
   height: 10vh;
@@ -345,6 +349,10 @@ main {
   border-radius: 5px;
 }
 
+.button-all:active {
+  border: 1px solid rgba(0, 114, 255, 1);
+}
+
 span {
   color: #002f6c;
   font-weight: bold;
@@ -363,6 +371,12 @@ span {
   display: block;
   padding-top: 30px;
   width: 100%;
+}
+
+.translate {
+  padding-top: 5px;
+  font-style: italic;
+  font-size: 14px;
 }
 
 /* === FOOTER =====================================*/

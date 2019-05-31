@@ -16,7 +16,7 @@ class ButtonsMainCard extends Component {
             <div className="buttons-main-card">
                 <a
                     href={this.props.movieNow.link}
-                    className="hvr-pulse-shrink"
+                    className="hvr-pulse-shrink button-all"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -27,7 +27,7 @@ class ButtonsMainCard extends Component {
                 </a>
 
                 <a
-                    className="hvr-pulse-shrink"
+                    className="hvr-pulse-shrink button-all"
                     onClick={e => this.clickBtnSave(e, this.props.searchTerm)}
                 >
                     <button className="btn-desktop" type="button">
@@ -35,7 +35,7 @@ class ButtonsMainCard extends Component {
                         <p className="btn-name">Save</p>
                     </button>
                 </a>
-                <a className="hvr-pulse-shrink" onClick={this.clickBtnTranslate}>
+                <a className="hvr-pulse-shrink button-all" onClick={this.clickBtnTranslate}>
                     <button className="btn-desktop" type="button">
                         <i className="fas fa-globe-europe" />
                         <p className="btn-name">Translate</p>

@@ -38,9 +38,11 @@ class WordInfo extends Component {
                 </p>
                 <p>
                     {searchTerm} ={' '}
-                    <span className="word-translate">{this.state.wordTranslate}</span>
+                    <span className="word-translate">
+                        <em>{this.state.wordTranslate}</em>
+                    </span>
                 </p>
-                <a className="hvr-pulse-shrink" onClick={() => this.addWord(searchTerm)}>
+                <a className="hvr-pulse-shrink button-all" onClick={() => this.addWord(searchTerm)}>
                     <button className="btn-desktop" type="button">
                         <i className="far fa-save" />
                         <p className="btn-name">Save</p>
