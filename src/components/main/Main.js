@@ -68,10 +68,10 @@ class Main extends React.Component {
             ));
 
         return (
-            <main className="content">
+            <main>
                 <Searchbox searchWord={this.searchWord} />
-                <div className="word-wrapper">
-                    <div className="language-option">
+                <div>
+                    <div>
                         <LanguageOption />
                     </div>
                     {subtitles.length > 0 ? (
@@ -80,7 +80,9 @@ class Main extends React.Component {
                         <Info />
                     )}
                 </div>
-                <div className="subtitle-container">{renderSubtitles}</div>
+                <div className="content">
+                    <div className="subtitle-container">{renderSubtitles}</div>
+                </div>
             </main>
         );
     }

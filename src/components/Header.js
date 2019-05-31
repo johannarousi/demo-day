@@ -31,7 +31,9 @@ class Header extends Component {
         return (
             <header className="header">
                 <div className="layer" />
-                <NavLink to="/" className="header-title">Finlary</NavLink>
+                <NavLink to="/" className="header-title">
+                    Finlary
+                </NavLink>
                 <button type="button" className="header-log">
                     Log in
                 </button>

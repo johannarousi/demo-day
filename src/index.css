@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -26,7 +27,7 @@ button {
 .phone-screen {
   width: 100%;
   max-width: 540px;
-  height: 100vh;
+  height: 100%;
   margin: 0 auto;
   border-radius: 10px;
   display: flex;
@@ -59,6 +60,9 @@ button {
   height: 60px;
   max-height: 60px;
   min-height: 60px;
+  position: fixed;
+  width: 100%;
+  z-index: 99;
 }
 
 .header-title {
@@ -81,36 +85,39 @@ button {
   color: #f6f6f6;
   font-size: 16px;
   padding-right: 10px;
+  cursor: pointer;
 }
 
 /* === SEARCHBOX ==================================*/
 
 .searchbox {
-  flex: 1;
   background-color: #f6f6f6;
+  top: 60px;
   height: 10vh;
   max-height: 60px;
   min-height: 60px;
   position: -webkit-sticky;
   position: sticky;
-  top: 0;
   display: flex;
   align-items: center;
-  box-shadow: 0px 10px 20px -13px rgba(38, 38, 38, 1);
+  box-shadow: 0px 10px 15px -13px rgb(55, 55, 55);
+  z-index: 999;
+  margin-bottom: 30px;
+  background-color: #DCDCDC;
 }
 
 .search-bar {
-  flex: 40vw;
+  flex: 75vw 1;
   max-width: 1300px;
   min-width: 100px;
   border: none;
   background: none;
   color: #f6f6f6;
-  text-align: left;
+  text-align: center;
   font-size: 1em;
   margin-top: 10px;
   color: black;
-  padding-left: 30px;
+  padding-left: 60px;
 }
 
 .search-btn {
@@ -126,22 +133,61 @@ button {
 
 /* === MAIN =======================================*/
 
-.word-wrapper {
-  margin: 30px auto;
-  max-height: 100px;
-  width: 100%;
+main {
+  position: relative;
+  margin-top: 60px;
+}
+
+.main {
+  position: relative;
+  margin-top: 250px;
 }
 
 .language-option {
-  font-size: 20px;
-  text-align: left;
-  margin-left: 20px;
+  font-size: 18px;
+  text-align: center;
+  width: 100%;
   margin-bottom: 30px;
 }
 
+.language-option label {
+  width: 10%;
+}
+
 .language-option label select {
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 16px;
+  width: 45%;
+  background-color: #DCDCDC;
+  border: none;
+  cursor: pointer;
+}
+
+/* Info.js, information and instructions for the app */
+.app-information {
+  background: #fff;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 10px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-information h1 {
+  flex: 1;
+  padding: 2vh 0;
+}
+
+.app-information p, .app-information ul {
+  flex: 1;
+  text-align: left;
+  padding: 2vh 3vw;
+  line-height: 25px;
+}
+
+.app-information ul {
+  list-style: circle;
 }
 
 .content {
@@ -150,7 +196,7 @@ button {
   -webkit-overflow-scrolling: touch;
   scrollbar-base-color: grey;
   scrollbar-track-color: grey;
-  padding-bottom: 60px;
+  margin-bottom: 100px;
 }
 
 .subtitle-container {
@@ -163,9 +209,11 @@ button {
   text-align: left;
   flex: 100%;
   margin: 30px 0;
+  background-color: #f5f5f5;
+  border-radius: 5px;
   box-shadow: 0px 2px 20px -13px rgba(38, 38, 38, 1);
   width: 378px;
-  max-height: 130px;
+  /* max-height: 130px; */
 }
 
 .subtitle {
@@ -176,7 +224,7 @@ button {
 
 .subtitle-para {
   flex: 85vw;
-  padding-left: 20px;
+  padding: 0 10px 0 20px;
 }
 
 .sub-btn-below {
@@ -187,7 +235,7 @@ button {
 .buttons-main-card {
   width: 100%;
   display: flex;
-  padding: 0 10px;
+  /* padding: 0 10px; */
 }
 
 .buttons-main-card > * {
@@ -197,15 +245,16 @@ button {
 .btn-desktop {
   display: flex;
   align-items: center;
-  width: 30px;
+  /* width: 30px; */
   height: 30px;
   background: none;
   border: none;
-  margin: 10px;
+  margin: 10px auto;
+  /* padding: 5px 40px 15px 40px; */
 }
 
 .btn-name {
-  padding-left: 10px;
+  padding-left: 6px;
   font-size: 13px;
   color: #404040;
 }
@@ -275,8 +324,8 @@ button {
 .hvr-pulse-shrink:active {
   -webkit-animation-name: hvr-pulse-shrink;
   animation-name: hvr-pulse-shrink;
-  -webkit-animation-duration: 0.3s;
-  animation-duration: 0.3s;
+  -webkit-animation-duration: 0.6s;
+  animation-duration: 0.6s;
   -webkit-animation-timing-function: linear;
   animation-timing-function: linear;
   -webkit-animation-iteration-count: infinite;
@@ -284,6 +333,8 @@ button {
   -webkit-animation-direction: alternate;
   animation-direction: alternate;
   cursor: pointer;
+  background-color: #DCDCDC;
+  border-radius: 5px;
 }
 
 span {
@@ -302,6 +353,8 @@ span {
 .word-wrapper {
   text-align: center;
   display: block;
+  padding-top: 30px;
+  width: 100%;
 }
 
 /* === FOOTER =====================================*/
@@ -311,6 +364,7 @@ span {
 }
 
 .footer {
+  z-index: 9999;
   position: fixed;
   bottom: 0;
   width: 100%;
@@ -342,6 +396,10 @@ span {
 
 .footer .btn:hover {
   transform: scale(1.1);
+}
+
+.footer .btn:active {
+  background: rgb(0,0,0,0.5);
 }
 
 .btn-word,
@@ -441,6 +499,7 @@ span {
     height: 20vh;
     max-height: 240px;
     min-height: 240px;
+    position: relative;
   }
 
   .layer {
@@ -481,15 +540,14 @@ span {
   }
 
   .searchbox {
-    position: absolute;
-    top: 90px;
-    left: 30vw;
+    top: 10px;
+    left: 32vw;
     height: 5vh;
     min-height: 50px;
     padding: 0;
-    border-radius: 30px;
+    border-radius: 50px;
     min-width: 250px;
-    width: 40vw;
+    width: 35vw;
   }
 
   .search-bar {
@@ -498,16 +556,35 @@ span {
   }
   .search-btn {
     padding-right: 10px;
+    flex: 10vw 1;
   }
 
   /*MAIN*/
 
+  .main {
+    margin-top: 60px;
+  }
+
   .language-option {
-    text-align: center;}
+    text-align: center;
+    width: 30%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+  }
+
+  .language-option label select {
+    width: 45%;
+  }
+
+  .app-information {
+    max-width: 700px;
+    min-width: 500px;
+    padding-left: 60px;
+  }
 
   .content {
     max-width: 1200px;
-    margin: 3vh auto 6vh auto;
+    margin: 30px auto 60px auto;
   }
 
   .subtitle-wrapper {
@@ -517,7 +594,7 @@ span {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 0 20px;
+    /* padding: 0 20px; */
     margin: 30px auto;
     transition: all 0.2s ease-in-out;
   }
@@ -541,8 +618,13 @@ span {
     flex-direction: column;
     padding-right: 10px;
     padding-left: 10px;
+    align-items: center !important;
   }
 
+  .footer .btn:visited {
+    background: rgb(0,0,0,0.1);
+  }
+/* 
   .btn-word {
     align-items: flex-end !important;
   }
@@ -553,7 +635,7 @@ span {
 
   .btn-list {
     align-items: flex-start !important;
-  }
+  } */
 
   .fa-wikipedia-w {
     flex: 0 1;
@@ -562,7 +644,7 @@ span {
 
   .fa-list {
     flex: 0 1;
-    padding-left: 10px;
+    padding-left: 8px;
     text-align: right;
   }
 
@@ -575,19 +657,29 @@ span {
     flex: 0 1 60px;
     text-shadow: 0px 0px 20px #001633;
   }
-}
 
-/* Info.js, information and instructions for the app */
-.app-information {
-  background: #fff;
-  width: 90vw;
-  margin-top: 2vh;
-}
+  .anchor {
+    text-decoration: none;
 
-.app-information h1 {
-  padding: 2vh 0;
-}
-
-.app-information p {
-  padding: 2vh 3vw;
+  }
+  
+  .scroll-to-top {
+    position: fixed;
+    right: 15px;
+    bottom: 40px;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .fa-angle-up {
+    color: white;
+    background: #D6D6D6;
+    padding: 13px 20px;
+    font-size: 30px;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .fa-angle-up:hover {
+    background: #808080;
+  }
 }

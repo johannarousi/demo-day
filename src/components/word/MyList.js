@@ -73,13 +73,15 @@ export class WordList extends Component {
         });
 
         return (
-            <div className="content">
-                <div>
+            <div className="main">
+                <div className="searchbox">
                     <p className="archivement">
-                        Your Vocabulary: <strong>{myList.length}</strong>
+                        My Vocabulary: <strong>{myList.length}</strong>
                     </p>
                 </div>
-                <div className="subtitle-container">{list}</div>
+                <div className="content">
+                    <div className="subtitle-container">{list}</div>
+                </div>
             </div>
         );
     }
