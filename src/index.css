@@ -76,6 +76,10 @@ button {
   font-size: 30px;
 }
 
+.header-title:active{
+  color: #002f6c;
+}
+
 .header-log {
   flex: 10vw;
   align-self: center;
@@ -104,6 +108,10 @@ button {
   z-index: 999;
   margin-bottom: 30px;
   background-color: #DCDCDC;
+}
+
+.searchbox:hover {
+  border: 1px solid #D3D3D3;
 }
 
 .search-bar {
@@ -395,11 +403,17 @@ span {
 }
 
 .footer .btn:hover {
-  transform: scale(1.1);
+  transform: none;
+  background: rgba(0, 0, 0, 0.3);
 }
 
 .footer .btn:active {
-  background: rgb(0,0,0,0.5);
+  border: 1px solid white;
+}
+
+.footer .btn-active {
+  background: rgb(255,255,255,0.1);
+  transform: none;
 }
 
 .btn-word,
@@ -524,7 +538,6 @@ span {
 
   .header-title {
     text-shadow: 0px 0px 20px #001633;
-    color: white;
     padding-left: 30px;
     padding-top: 2vh;
     align-self: unset;
@@ -607,7 +620,7 @@ span {
 
   .footer {
     position: absolute;
-    top: 170px;
+    top: 180px;
     justify-content: center;
     background: transparent;
   }
@@ -615,27 +628,31 @@ span {
   .footer .btn {
     flex: 0 1 100px;
     width: 100px;
+    margin: 0 5px;
     flex-direction: column;
-    padding-right: 10px;
-    padding-left: 10px;
+    padding-bottom: 10px;
     align-items: center !important;
   }
 
-  .footer .btn:visited {
-    background: rgb(0,0,0,0.1);
-  }
-/* 
-  .btn-word {
-    align-items: flex-end !important;
-  }
-
-  .btn-search {
-    align-items: center !important;
+  .footer .btn:hover {
+    transform: none;
+    border-radius: 10px 10px 0px 0px;
+    -moz-border-radius: 10px 10px 0px 0px;
+    -webkit-border-radius: 10px 10px 0px 0px;
+    background: rgba(0, 0, 0, 0.2);
   }
 
-  .btn-list {
-    align-items: flex-start !important;
-  } */
+  .footer .btn:active {
+    border: 1px solid white;
+  }
+
+.btn-active {
+  background: #f6f6f6;
+  border-radius: 10px 10px 0px 0px;
+  -moz-border-radius: 10px 10px 0px 0px;
+  -webkit-border-radius: 10px 10px 0px 0px;
+  background-color: #f6f6f6;
+}
 
   .fa-wikipedia-w {
     flex: 0 1;
@@ -656,6 +673,10 @@ span {
     text-align: right;
     flex: 0 1 60px;
     text-shadow: 0px 0px 20px #001633;
+  }
+
+  .font-title:active {
+    color: white;
   }
 
   .anchor {
