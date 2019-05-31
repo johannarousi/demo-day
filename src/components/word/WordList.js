@@ -80,7 +80,10 @@ export class WordList extends Component {
                     </p>
                 </div>
                 <div className="buttons-main-card">
-                    <a className="hvr-pulse-shrink" onClick={() => this.addWord(word.name)}>
+                    <a
+                        className="hvr-pulse-shrink button-all"
+                        onClick={() => this.addWord(word.name)}
+                    >
                         <button className="btn-desktop" type="button">
                             <i className="far fa-save" />
                             <p className="btn-name">Save</p>
@@ -89,7 +92,10 @@ export class WordList extends Component {
                     {/* <button onClick={this.clickWord} type="button" id={word.name}>
                     More
                 </button> */}
-                    <a className="hvr-pulse-shrink" onClick={() => this.clickShowAll(word.name)}>
+                    <a
+                        className="hvr-pulse-shrink button-all"
+                        onClick={() => this.clickShowAll(word.name)}
+                    >
                         <button className="btn-desktop" type="button">
                             <i className="far fa-plus-square" />
                             <p className="btn-name">More</p>
