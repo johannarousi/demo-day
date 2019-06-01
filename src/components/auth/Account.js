@@ -16,7 +16,11 @@ class Account extends Component {
         return (
             <main>
                 <h1>Account</h1>
-                <button className="header-log button-all" onClick={this.clickLogOut}>
+                <button
+                    className="header-log button-all"
+                    style={{ color: 'black' }}
+                    onClick={this.clickLogOut}
+                >
                     Log out
                 </button>
             </main>

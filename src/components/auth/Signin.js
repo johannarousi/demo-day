@@ -56,7 +56,7 @@ class Signin extends React.Component {
 
                     <div className="">
                         <button className="">Sign In</button>
-                        <NavLink to="/sign-up" className="">
+                        <NavLink to="/sign-up" className="" style={{ color: 'black' }}>
                             Sign up
                         </NavLink>
                     </div>
