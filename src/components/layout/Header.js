@@ -7,36 +7,27 @@ import birch from '../../img/birch.jpg';
 import flag from '../../img/flag.jpg';
 
 class Header extends Component {
-    // state = {
-    //     imgs: [],
-    // };
-
-    // componentDidMount() {
-    //     fetch(`https://api.unsplash.com/photos/query="finland"?`)
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             this.setState({ imgs: data });
-    //         })
-    //         .catch(err => {
-    //             console.log('Error happened during fetching!', err);
-    //         });
-    // }
-
     render() {
-        // const styles = {
-        //     backgroundImage: `url(${birch})`,
-        //     backgroundPosition: 'center top',
-        //     backgroundSize: 'cover',
-        // };
+        // const { login } = this.state;
+        const { login } = this.props;
+        console.log(this.props);
         return (
             <header className="header">
                 <div className="layer" />
                 <NavLink to="/" className="header-title button-all">
                     Finlary
                 </NavLink>
-                <button type="button" className="header-log button-all">
-                    Log in
-                </button>
+
+                {login === false && (
+                    <NavLink to="/sign-in" className="header-log button-all">
+                        Log in
+                    </NavLink>
+                )}
+                {login === true && (
+                    <NavLink to="/account" className="header-log button-all">
+                        Account
+                    </NavLink>
+                )}
             </header>
         );
     }
