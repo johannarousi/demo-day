@@ -24,7 +24,7 @@ export class WordList extends Component {
     clickWord = e => {
         const clickWord = e.currentTarget.id;
 
-        const clickParent = e.currentTarget.closest('.word_wrapper');
+        const clickParent = e.currentTarget.closest('.word-wrapper');
 
         const checkClick = clickParent.querySelector('.subtitle');
         const numSubtible = checkClick.textContent.length;
@@ -70,42 +70,54 @@ export class WordList extends Component {
     render() {
         const { totalList, myList } = this.state;
         // console.log(datalist);
-        const styles = {
-            background: '#fff',
-            width: '85%',
-            margin: '3% auto',
-            padding: '2% 0',
-        };
         const showlist = [...totalList]
             .filter(word => !myList.find(item => item.word == word.name))
             .splice(0, 200);
 
         const list = showlist.map(word => (
-            <div style={styles} key={word._id} className="word_wrapper">
-                <p>
-                    Word <span>{word.name}</span> appears <span>{word.frequency}</span> times.
-                </p>
-                <div className="subtitle" />
-                <button onClick={() => this.addWord(word.name)} type="button">
-                    Add
-                </button>
-                {/* <button onClick={this.clickWord} type="button" id={word.name}>
+            <div key={word._id} className="subtitle-wrapper">
+                <div className="subtitle">
+                    <p className="subtitle-para">
+                        Word <span>{word.name}</span> appears <span>{word.frequency}</span> times.
+                    </p>
+                </div>
+                <div className="buttons-main-card">
+                    <a
+                        className="hvr-pulse-shrink button-all"
+                        onClick={() => this.addWord(word.name)}
+                    >
+                        <button className="btn-desktop" type="button">
+                            <i className="far fa-save" />
+                            <p className="btn-name">Save</p>
+                        </button>
+                    </a>
+                    {/* <button onClick={this.clickWord} type="button" id={word.name}>
                     More
                 </button> */}
-                <button onClick={() => this.clickShowAll(word.name)} type="button">
-                    More
-                </button>
+                    <a
+                        className="hvr-pulse-shrink button-all"
+                        onClick={() => this.clickShowAll(word.name)}
+                    >
+                        <button className="btn-desktop" type="button">
+                            <i className="far fa-plus-square" />
+                            <p className="btn-name">More</p>
+                        </button>
+                    </a>
+                </div>
             </div>
         ));
 
         return (
-            <div>
-                <div>
-                    <h3>
-                        Process: {myList.length} /{totalList.length}
-                    </h3>
+            <div className="main">
+                <div className="searchbox">
+                    <p className="archivement">
+                        Progress: <strong>{myList.length}</strong> /{' '}
+                        <strong>{totalList.length}</strong> words.
+                    </p>
                 </div>
-                {list}
+                <div className="content">
+                    <div className="subtitle-container">{list}</div>
+                </div>
             </div>
         );
     }

@@ -6,6 +6,12 @@ class Searchbox extends React.Component {
         searchInput: '',
     };
 
+    focusInput = component => {
+        if (component) {
+            component.focus();
+        }
+    };
+
     handleInput = e => {
         this.setState({ searchInput: e.currentTarget.value });
         this.props.searchWord(e.currentTarget.value.toLowerCase().trim());
@@ -15,6 +21,7 @@ class Searchbox extends React.Component {
         return (
             <div className="searchbox">
                 <input
+                    ref={this.focusInput}
                     type="text"
                     className="search-bar"
                     placeholder="Search ..."

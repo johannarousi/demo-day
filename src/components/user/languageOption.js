@@ -19,7 +19,7 @@ class LanguageOption extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="language-option">
                 <label>
                     Language:
                     <select value={this.state.language} onChange={this.handleChange}>

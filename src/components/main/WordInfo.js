@@ -32,16 +32,22 @@ class WordInfo extends Component {
     render() {
         const { searchTerm, subtitles } = this.props;
         return (
-            <div className="word-info">
+            <div className="language-option">
                 <p>
                     Word <span>{searchTerm}</span> is in {subtitles.length} subtitles
-                    <button onClick={() => this.addWord(searchTerm)} type="button">
-                        Add
-                    </button>
                 </p>
                 <p>
-                    {searchTerm} =<span className="word-translate">{this.state.wordTranslate}</span>
+                    {searchTerm} ={' '}
+                    <span className="word-translate">
+                        <em>{this.state.wordTranslate}</em>
+                    </span>
                 </p>
+                <a className="hvr-pulse-shrink button-all" onClick={() => this.addWord(searchTerm)}>
+                    <button className="btn-desktop" type="button">
+                        <i className="far fa-save" />
+                        <p className="btn-name">Save</p>
+                    </button>
+                </a>
             </div>
         );
     }
