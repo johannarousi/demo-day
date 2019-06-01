@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, NavLink, Redirect, Prompt } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/layout/Header';
 
 import Main from './components/main/Main';
-import Footer from './components/Footer';
-import FooterDesktop from './components/FooterDesktop';
+import Footer from './components/layout/Footer';
+import FooterDesktop from './components/layout/FooterDesktop';
 import WordList from './components/word/WordList';
 import MyList from './components/word/MyList';
 // import HeaderDesktop from './components/HeaderDesktop';

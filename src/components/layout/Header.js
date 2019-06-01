@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { CoverageMap } from 'istanbul-lib-coverage';
 import Searchbox from './Searchbox';
 import SearchboxDesktop from './SearchboxDesktop';
-import birch from '../img/birch.jpg';
-import flag from '../img/flag.jpg';
+import birch from '../../img/birch.jpg';
+import flag from '../../img/flag.jpg';
 
 class Header extends Component {
     // state = {
