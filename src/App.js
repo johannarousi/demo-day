@@ -15,6 +15,7 @@ import Account from './components/auth/Account';
 class App extends Component {
     state = {
         login: '',
+        user: {},
     };
 
     componentDidMount() {
@@ -25,7 +26,7 @@ class App extends Component {
             if (user) {
                 console.log('user log in');
 
-                this.setState({ login: true });
+                this.setState({ login: true, user });
             } else {
                 console.log('user log out');
                 this.setState({ login: false });
@@ -38,18 +39,18 @@ class App extends Component {
     }
 
     render() {
-        const { login } = this.state;
+        const { login, user } = this.state;
         console.log(this.state);
         return (
             <BrowserRouter>
                 <div className="phone-screen">
-                    <Header login={login} />
+                    <Header login={login} user={user} />
                     <Switch>
                         <Route path="/words" component={WordList} />
                         <Route path="/list" component={MyList} />
                         <Route path="/sign-in" component={Signin} />
                         <Route path="/sign-up" component={Signup} />
-                        <Route path="/account" component={Account} />
+                        <Route path="/account" component={() => <Account user={user} />} />
                         <Route path="/:word?" component={Main} />
                     </Switch>
                     <Footer />
