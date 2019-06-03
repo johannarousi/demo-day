@@ -55,13 +55,19 @@ export class WordList extends Component {
                     </div>
 
                     <div className="buttons-main-card">
-                        <a className="hvr-pulse-shrink button-all" onClick={() => this.removeWord(item.word)}>
+                        <a
+                            className="hvr-pulse-shrink button-all"
+                            onClick={() => this.removeWord(item.word)}
+                        >
                             <button className="btn-desktop" type="button">
                                 <i className="far fa-minus-square" />
                                 <p className="btn-name">Remove</p>
                             </button>
                         </a>
-                        <a className="hvr-pulse-shrink button-all" onClick={() => this.clickMore(item.word)}>
+                        <a
+                            className="hvr-pulse-shrink button-all"
+                            onClick={() => this.clickMore(item.word)}
+                        >
                             <button className="btn-desktop" type="button">
                                 <i className="far fa-plus-square" />
                                 <p className="btn-name">More</p>
