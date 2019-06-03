@@ -49,7 +49,7 @@ class Account extends Component {
         db.collection('userSync')
             .doc(user.uid)
             .set(docData)
-            .then(function() {
+            .then(() => {
                 console.log('Document successfully written!');
                 this.setState({ onlineList: localList });
             });

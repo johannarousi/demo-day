@@ -16,10 +16,13 @@ class Signup extends React.Component {
         const { email, password } = this.state;
         auth.createUserWithEmailAndPassword(email, password).then(cred => {
             console.log(cred);
+            this.props.history.push('/');
         });
     };
 
     render() {
+        console.log(this.props);
+
         return (
             <main>
                 <h1>Sign up</h1>
