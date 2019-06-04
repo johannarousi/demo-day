@@ -50,7 +50,10 @@ class App extends Component {
                         <Route path="/list" component={MyList} />
                         <Route path="/sign-in" component={Signin} />
                         <Route path="/sign-up" component={Signup} />
-                        <Route path="/account" component={() => <Account user={user} />} />
+                        <Route
+                            path="/account"
+                            component={props => <Account {...props} login={login} user={user} />}
+                        />
                         <Route path="/:word?" component={Main} />
                     </Switch>
                     <Footer />
