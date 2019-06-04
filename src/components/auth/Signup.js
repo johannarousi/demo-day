@@ -24,45 +24,64 @@ class Signup extends React.Component {
         console.log(this.props);
 
         return (
-            <main>
-                <h1>Sign up</h1>
-                <form className="" onSubmit={this.handleSubmit}>
-                    <div className="">
-                        <label className="" htmlFor="email">
-                            Email Address
-                        </label>
-                        <input
-                            type="email"
-                            id="email"
-                            value={this.state.email}
-                            placeholder="Enter your email"
-                            name="email"
-                            onChange={this.handleChange}
-                        />
-                    </div>
+            <div className="main">
+                <div className="content">
+                    <h1>Sign up</h1>
+                    <div className="subtitle-wrapper">
+                        <div className="subtitle">
+                            <form className="form-login" onSubmit={this.handleSubmit}>
+                                <div className="">
+                                    <label className="" htmlFor="email">
+                                        Email Address
+                                    </label>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        value={this.state.email}
+                                        placeholder="Enter your email"
+                                        name="email"
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
 
-                    <div className="">
-                        <label className="" htmlFor="password">
-                            Password
-                        </label>
-                        <input
-                            type="password"
-                            id="password"
-                            value={this.state.password}
-                            placeholder="Enter your Password"
-                            name="password"
-                            onChange={this.handleChange}
-                        />
-                    </div>
+                                <div className="">
+                                    <label className="" htmlFor="password">
+                                        Password
+                                    </label>
+                                    <input
+                                        type="password"
+                                        id="password"
+                                        value={this.state.password}
+                                        placeholder="Enter your Password"
+                                        name="password"
+                                        onChange={this.handleChange}
+                                    />
+                                </div>
 
-                    <div className="">
-                        <button className="">Sign up</button>
-                        <NavLink to="/sign-in" className="" style={{ color: 'black' }}>
-                            Sign in
-                        </NavLink>
+                                <div className="buttons-main-card">
+                                    <a className="hvr-pulse-shrink button-all">
+                                        <button className="btn-desktop" type="submit">
+                                            <i className="fas fa-user-plus" />
+
+                                            <p className="btn-name">Sign up</p>
+                                        </button>
+                                    </a>
+                                    <NavLink
+                                        to="/sign-in"
+                                        className="hvr-pulse-shrink button-all"
+                                        style={{ color: 'black' }}
+                                    >
+                                        <button className="btn-desktop" type="button">
+                                            <i className="fas fa-sign-in-alt" />
+                                            <p className="btn-name">Log in</p>
+                                        </button>
+                                    </NavLink>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                </form>
-            </main>
+                </div>
+            </div>
         );
     }
 }
