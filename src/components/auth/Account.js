@@ -95,7 +95,7 @@ class Account extends Component {
                                 <button className="btn-desktop" type="submit">
                                     <i className="fas fa-user-plus" />
 
-                                    <p className="btn-name">Reset Account</p>
+                                    <p className="btn-name">Delete Account</p>
                                 </button>
                             </a>
                         </div>

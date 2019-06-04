@@ -77,6 +77,14 @@ class Signin extends React.Component {
                             </form>
                         </div>
                     </div>
+                    <div className="subtitle-wrapper">
+                        <div className="subtitle">
+                            <h4>You can use guest account</h4>
+
+                            <p>Email: guest@gmail.com</p>
+                            <p>Password: 123456</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         );
