@@ -8,7 +8,7 @@ class Searchbox extends React.Component {
 
     focusInput = component => {
         if (component) {
-            component.focus();
+            // component.focus();
         }
     };
 
